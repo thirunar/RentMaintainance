@@ -6,7 +6,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="com.rentmaintainance.app.AddPropertyFragment">
+                tools:context="com.rentmaintainance.app.view.AddPropertyFragment">
 
 
     <TextView
@@ -51,7 +51,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rent"
+            android:text="@string/rent"
             android:id="@+id/rentTextView"
             android:layout_below="@+id/houseNameEditText"
             android:layout_marginTop="5dp"
@@ -106,5 +106,20 @@
             android:inputType="text"
             android:layout_alignRight="@+id/itemsEditText"
             android:layout_alignEnd="@+id/itemsEditText"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_property"
+            android:id="@+id/addPropertyButton"
+            android:layout_below="@+id/detailsEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="58dp"/>
+    <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/date"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:id="@+id/dateTextView" android:layout_below="@+id/detailsEditText" android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true"/>-->
 
 </RelativeLayout>

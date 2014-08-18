@@ -14,5 +14,7 @@
     <string name="rent">Rent</string>
     <string name="items">Items</string>
     <string name="details">Details</string>
+    <string name="add_property">Add Property</string>
+    <string name="date">Date</string>
 
 </resources>

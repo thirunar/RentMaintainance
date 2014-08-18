@@ -1,4 +1,4 @@
-package com.rentmaintainance.app;
+package com.rentmaintainance.app.view;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
+import com.rentmaintainance.app.R;
 
 
 public class MainActivity extends ActionBarActivity
@@ -24,7 +25,6 @@ public class MainActivity extends ActionBarActivity
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
-        // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));

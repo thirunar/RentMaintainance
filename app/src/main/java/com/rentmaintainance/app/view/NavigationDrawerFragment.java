@@ -1,4 +1,4 @@
-package com.rentmaintainance.app;
+package com.rentmaintainance.app.view;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -15,6 +15,7 @@ import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import com.rentmaintainance.app.R;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
