@@ -73,7 +73,8 @@
             android:layout_height="wrap_content"
             android:text="@string/items"
             android:layout_marginTop="5dp"
-            android:id="@+id/itemsTextView" android:layout_below="@+id/rentEditText" android:layout_alignParentLeft="true"
+            android:id="@+id/itemsTextView" android:layout_below="@+id/rentEditText"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <EditText
             android:layout_width="wrap_content"
@@ -106,20 +107,34 @@
             android:inputType="text"
             android:layout_alignRight="@+id/itemsEditText"
             android:layout_alignEnd="@+id/itemsEditText"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address"
+            android:layout_marginTop="5dp"
+            android:id="@+id/addressTextView"
+            android:layout_below="@+id/detailsEditText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addressEditText"
+            android:layout_below="@+id/addressTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/detailsEditText"
+            android:layout_alignEnd="@+id/detailsEditText"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_property"
             android:id="@+id/addPropertyButton"
-            android:layout_below="@+id/detailsEditText"
+            android:layout_below="@+id/addressEditText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="58dp"/>
-    <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/date"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:id="@+id/dateTextView" android:layout_below="@+id/detailsEditText" android:layout_alignParentLeft="true"-->
-            <!--android:layout_alignParentStart="true"/>-->
+
 
 </RelativeLayout>

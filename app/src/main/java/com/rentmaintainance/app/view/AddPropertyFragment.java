@@ -17,12 +17,12 @@ import java.util.Date;
 
 public class AddPropertyFragment extends Fragment {
 
-
     private EditText houseNumberEditText;
     private EditText houseNameEditText;
     private EditText rentEditText;
     private EditText itemsEditText;
     private EditText detailsEditText;
+    private EditText addressEditText;
     private Button addPropertyButton;
     private Repository repository;
 
@@ -51,21 +51,25 @@ public class AddPropertyFragment extends Fragment {
 
     private Property getPropertyDetails() {
         Property property = new Property();
+
         property.setHouseNumber(houseNumberEditText.getText().toString());
         property.setName(houseNameEditText.getText().toString());
         property.setDetails(detailsEditText.getText().toString());
         property.setRent(DoubleUtil.tryParse(rentEditText.getText().toString(), 0));
         property.setItems(itemsEditText.getText().toString());
+        property.setAddress(addressEditText.getText().toString());
         property.setDate(new Date());
 
         return property;
     }
+
     private void initializeView(View rootView) {
         houseNumberEditText = (EditText) rootView.findViewById(R.id.houseNumberEditText);
         houseNameEditText = (EditText) rootView.findViewById(R.id.houseNameEditText);
         rentEditText = (EditText) rootView.findViewById(R.id.rentEditText);
         itemsEditText = (EditText) rootView.findViewById(R.id.itemsEditText);
         detailsEditText = (EditText) rootView.findViewById(R.id.detailsEditText);
+        addressEditText = (EditText) rootView.findViewById(R.id.addressEditText);
         addPropertyButton = (Button) rootView.findViewById(R.id.addPropertyButton);
     }
 

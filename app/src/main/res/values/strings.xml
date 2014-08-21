@@ -16,5 +16,6 @@
     <string name="details">Details</string>
     <string name="add_property">Add Property</string>
     <string name="date">Date</string>
+    <string name="address">Address</string>
 
 </resources>

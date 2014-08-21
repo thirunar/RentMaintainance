@@ -9,6 +9,7 @@ public class Property {
     private double rent;
     private String items;
     private String details;
+    private String address;
     private Date date;
 
     public String getHouseNumber() {
@@ -57,6 +58,14 @@ public class Property {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
 

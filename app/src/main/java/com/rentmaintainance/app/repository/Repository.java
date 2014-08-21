@@ -22,6 +22,7 @@ public class Repository extends SQLiteOpenHelper {
     private static final String KEY_RENT = "rent";
     private static final String KEY_ITEMS = "items";
     private static final String KEY_DETAILS = "details";
+    private static final String KEY_ADDRESS = "address";
     private static final String KEY_DATE = "date";
 
     private static final String CREATE_PROPERTY = "CREATE TABLE "
@@ -31,6 +32,7 @@ public class Repository extends SQLiteOpenHelper {
             + KEY_RENT + " FLOAT,"
             + KEY_ITEMS + " TEXT,"
             + KEY_DETAILS + " TEXT, "
+            + KEY_ADDRESS + " TEXT, "
             + KEY_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP" + ")";
 
 
@@ -43,7 +45,7 @@ public class Repository extends SQLiteOpenHelper {
         db.execSQL(CREATE_PROPERTY);
     }
 
-    public long addPropertyDetails(Property property) throws SQLiteException{
+    public long addPropertyDetails(Property property) throws SQLiteException {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -52,6 +54,7 @@ public class Repository extends SQLiteOpenHelper {
         values.put(KEY_RENT, property.getRent());
         values.put(KEY_ITEMS, property.getItems());
         values.put(KEY_DETAILS, property.getDetails());
+        values.put(KEY_ADDRESS, property.getAddress());
         values.put(KEY_DATE, DateUtil.formatDateTime(property.getDate()));
 
         long rowId = db.insert(TABLE_PROPERTY, KEY_HOUSE_NUMBER, values);
