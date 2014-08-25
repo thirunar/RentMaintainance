@@ -1,8 +1,11 @@
 package com.rentmaintainance.app.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
-public class Property {
+public class Property implements Parcelable {
 
     private String houseNumber;
     private String name;
@@ -11,6 +14,21 @@ public class Property {
     private String details;
     private String address;
     private Date date;
+
+    public Property() {
+
+    }
+
+    public Property(Parcel parcel) {
+        houseNumber = parcel.readString();
+        name = parcel.readString();
+        rent = parcel.readDouble();
+        items = parcel.readString();
+        details = parcel.readString();
+        address = parcel.readString();
+        date = new Date(parcel.readLong());
+    }
+
 
     public String getHouseNumber() {
         return houseNumber;
@@ -67,5 +85,31 @@ public class Property {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(houseNumber);
+        dest.writeString(name);
+        dest.writeDouble(rent);
+        dest.writeString(items);
+        dest.writeString(details);
+        dest.writeString(address);
+        dest.writeLong(date.getTime());
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Property createFromParcel(Parcel in) {
+            return new Property(in);
+        }
+
+        public Property[] newArray(int size) {
+            return new Property[size];
+        }
+    };
 }
 

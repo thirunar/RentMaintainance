@@ -3,7 +3,7 @@
 
     <string name="app_name">RentMaintainance</string>
     <string name="title_add_property">Add Property</string>
-    <string name="title_section2">Section 2</string>
+    <string name="title_view_property">View Property</string>
     <string name="title_section3">Section 3</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -15,6 +15,7 @@
     <string name="items">Items</string>
     <string name="details">Details</string>
     <string name="add_property">Add Property</string>
+    <string name="edit_property">Edit Property</string>
     <string name="date">Date</string>
     <string name="address">Address</string>
 

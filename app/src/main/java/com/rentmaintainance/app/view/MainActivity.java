@@ -39,6 +39,11 @@ public class MainActivity extends ActionBarActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new AddPropertyFragment())
                     .commit();
+
+        if (position == 1)
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, new ViewPropertiesFragment())
+                    .commit();
     }
 
     public void onSectionAttached(int number) {
@@ -47,7 +52,7 @@ public class MainActivity extends ActionBarActivity
                 mTitle = getString(R.string.title_add_property);
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                mTitle = getString(R.string.title_view_property);
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
