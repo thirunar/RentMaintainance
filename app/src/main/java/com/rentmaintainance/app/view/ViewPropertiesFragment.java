@@ -30,13 +30,15 @@ public class ViewPropertiesFragment extends Fragment {
 
         initializeView(rootView);
 
+
+
         propertiesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 getFragmentManager().beginTransaction()
                         .replace(R.id.container,
-                                EditPropertyFragment.newInstance((Property) parent.getItemAtPosition(position)))
+                                ViewPropertyFragment.newInstance((Property) parent.getItemAtPosition(position)))
                         .addToBackStack(null)
                         .commit();
             }

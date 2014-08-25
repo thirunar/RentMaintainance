@@ -57,6 +57,7 @@ public class EditPropertyFragment extends Fragment {
                 Property property = getPropertyDetails();
 
                 repository.updatePropertyDetails(property);
+                getActivity().getSupportFragmentManager().popBackStack();
             }
         });
 
