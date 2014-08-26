@@ -8,13 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
 import com.rentmaintainance.app.model.Property;
 
 import static com.rentmaintainance.app.AllConstants.PROPERTY_STRING;
 
 public class ViewPropertyFragment extends Fragment {
-
 
     private TextView houseNumberValueTextView;
     private TextView houseNameValueTextView;
@@ -23,6 +23,7 @@ public class ViewPropertyFragment extends Fragment {
     private TextView detailsValueTextView;
     private TextView addressValueTextView;
     private Button editPropertyButton;
+    private Context context;
 
     public static ViewPropertyFragment newInstance(Property property) {
         ViewPropertyFragment fragment = new ViewPropertyFragment();
@@ -83,6 +84,8 @@ public class ViewPropertyFragment extends Fragment {
         detailsValueTextView = (TextView) rootView.findViewById(R.id.detailsValueTextView);
         addressValueTextView = (TextView) rootView.findViewById(R.id.addressValueTextView);
         editPropertyButton = (Button) rootView.findViewById(R.id.editPropertyButton);
+        context = Context.getInstance().updateApplicationContext(getActivity().getApplicationContext());
+        context.initRepository();
     }
 
     @Override

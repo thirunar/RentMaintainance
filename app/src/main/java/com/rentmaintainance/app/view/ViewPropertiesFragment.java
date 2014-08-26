@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
 import com.rentmaintainance.app.model.Property;
-import com.rentmaintainance.app.repository.Repository;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class ViewPropertiesFragment extends Fragment {
 
     private static final String TAG = "ViewPropertiesFragment";
     private ListView propertiesListView;
-    private Repository repository;
+    private Context context;
 
     public ViewPropertiesFragment() {
     }
@@ -29,8 +29,6 @@ public class ViewPropertiesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_view_properties, container, false);
 
         initializeView(rootView);
-
-
 
         propertiesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -48,9 +46,8 @@ public class ViewPropertiesFragment extends Fragment {
 
     private void initializeView(View rootView) {
         propertiesListView = (ListView) rootView.findViewById(R.id.propertiesListView);
-        repository = new Repository(getActivity().getApplicationContext());
 
-        List<Property> properties = repository.getAllProperties();
+        List<Property> properties = Context.getInstance().allProperties().getAllProperties();
 
         PropertiesListAdaptor propertiesListAdaptor = new PropertiesListAdaptor(getActivity().getApplicationContext(), properties);
         propertiesListView.setAdapter(propertiesListAdaptor);

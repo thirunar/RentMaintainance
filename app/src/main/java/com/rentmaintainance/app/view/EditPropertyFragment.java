@@ -9,12 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import com.rentmaintainance.app.AllConstants;
+import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
 import com.rentmaintainance.app.model.Property;
-import com.rentmaintainance.app.repository.Repository;
 import com.rentmaintainance.app.utils.DoubleUtil;
 
 import java.util.Date;
+
+import static com.rentmaintainance.app.Context.getInstance;
 
 public class EditPropertyFragment extends Fragment {
 
@@ -25,7 +27,7 @@ public class EditPropertyFragment extends Fragment {
     private EditText detailsEditText;
     private EditText addressEditText;
     private Button editPropertyButton;
-    private Repository repository;
+    private Context context;
 
     public EditPropertyFragment() {
     }
@@ -47,7 +49,6 @@ public class EditPropertyFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_edit_property, container, false);
 
         initializeView(rootView);
-        repository = new Repository(getActivity().getApplicationContext());
 
         initializeProperty();
 
@@ -56,7 +57,7 @@ public class EditPropertyFragment extends Fragment {
             public void onClick(View v) {
                 Property property = getPropertyDetails();
 
-                repository.updatePropertyDetails(property);
+                getInstance().allProperties().updatePropertyDetails(property);
                 getActivity().getSupportFragmentManager().popBackStack();
             }
         });
