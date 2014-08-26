@@ -8,12 +8,9 @@ public class Repository extends SQLiteOpenHelper {
     private static final String LOG = "Repository";
 
     private MaintainceRepository[] repositories;
-    private static final int DATABASE_VERSION = 1;
 
-    private static final String DATABASE_NAME = "rentMaintainance";
-
-    public Repository(Context context, MaintainceRepository... repositories) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public Repository(Context context, String databaseName, MaintainceRepository... repositories) {
+        super(context, MaintainceRepository.DATABASE_NAME, null, MaintainceRepository.DATABASE_VERSION);
         this.repositories = repositories;
 
         for (MaintainceRepository repository : repositories) {

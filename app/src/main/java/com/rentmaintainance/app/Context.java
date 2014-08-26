@@ -4,6 +4,8 @@ import com.rentmaintainance.app.repository.AllProperties;
 import com.rentmaintainance.app.repository.PropertyRepository;
 import com.rentmaintainance.app.repository.Repository;
 
+import static com.rentmaintainance.app.AllConstants.DATABASE_NAME;
+
 public class Context {
     private android.content.Context applicationContext;
     public static Context context = new Context();
@@ -19,7 +21,7 @@ public class Context {
 
     public Repository initRepository() {
         if (repository == null) {
-            return new Repository(applicationContext(), getPropertyRepository());
+            return new Repository(applicationContext(), DATABASE_NAME, getPropertyRepository());
         }
         return repository;
     }
