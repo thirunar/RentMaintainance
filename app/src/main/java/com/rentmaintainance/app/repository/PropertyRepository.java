@@ -12,15 +12,15 @@ import java.util.List;
 
 public class PropertyRepository extends MaintainceRepository {
 
-    public final String TABLE_PROPERTY = "property";
-    public final String KEY_HOUSE_NUMBER = "houseNumber";
-    public final String KEY_NAME = "name";
-    public final String KEY_RENT = "rent";
-    public final String KEY_ITEMS = "items";
-    public final String KEY_DETAILS = "details";
-    public final String KEY_ADDRESS = "address";
-    public final String KEY_DATE = "date";
-    public final String CREATE_PROPERTY = "CREATE TABLE "
+    public static final String TABLE_PROPERTY = "property";
+    public static final String KEY_HOUSE_NUMBER = "houseNumber";
+    public static final String KEY_NAME = "name";
+    public static final String KEY_RENT = "rent";
+    public static final String KEY_ITEMS = "items";
+    public static final String KEY_DETAILS = "details";
+    public static final String KEY_ADDRESS = "address";
+    public static final String KEY_DATE = "date";
+    public static final String CREATE_PROPERTY = "CREATE TABLE "
             + TABLE_PROPERTY + "("
             + KEY_HOUSE_NUMBER + " TEXT PRIMARY KEY,"
             + KEY_NAME + " TEXT,"
