@@ -3,8 +3,7 @@ package com.rentmaintainance.app;
 import com.rentmaintainance.app.repository.AllProperties;
 import com.rentmaintainance.app.repository.PropertyRepository;
 import com.rentmaintainance.app.repository.Repository;
-
-import static com.rentmaintainance.app.AllConstants.DATABASE_NAME;
+import com.rentmaintainance.app.repository.TenantRepository;
 
 public class Context {
     private android.content.Context applicationContext;
@@ -12,6 +11,7 @@ public class Context {
 
     private Repository repository;
     private PropertyRepository propertyRepository;
+    private TenantRepository tenantRepository;
 
     private AllProperties properties;
 
@@ -21,7 +21,7 @@ public class Context {
 
     public Repository initRepository() {
         if (repository == null) {
-            return new Repository(applicationContext(), DATABASE_NAME, getPropertyRepository());
+            return new Repository(applicationContext(), getPropertyRepository());
         }
         return repository;
     }
@@ -31,6 +31,13 @@ public class Context {
             this.propertyRepository = new PropertyRepository();
         }
         return propertyRepository;
+    }
+
+    private TenantRepository getTenantRepository() {
+        if (tenantRepository == null) {
+            this.tenantRepository = new TenantRepository();
+        }
+        return tenantRepository;
     }
 
     public android.content.Context applicationContext() {
