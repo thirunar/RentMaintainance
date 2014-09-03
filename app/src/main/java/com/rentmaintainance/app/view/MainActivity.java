@@ -1,12 +1,12 @@
 package com.rentmaintainance.app.view;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.widget.DrawerLayout;
 import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
 
@@ -38,7 +38,7 @@ public class MainActivity extends ActionBarActivity
         // update the main content by replacing fragments
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        if(position == 0)
+        if (position == 0)
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new AddPropertyFragment())
                     .commit();
