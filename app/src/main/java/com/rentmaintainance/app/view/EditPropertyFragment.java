@@ -28,6 +28,7 @@ public class EditPropertyFragment extends Fragment {
     private EditText addressEditText;
     private Button editPropertyButton;
     private Context context;
+    private EditText tenantNameEditText;
 
     public EditPropertyFragment() {
     }
@@ -85,6 +86,7 @@ public class EditPropertyFragment extends Fragment {
         property.setRent(DoubleUtil.tryParse(rentEditText.getText().toString(), 0));
         property.setItems(itemsEditText.getText().toString());
         property.setAddress(addressEditText.getText().toString());
+        property.setTenantId(tenantNameEditText.getText().toString());
         property.setDate(new Date());
 
         return property;
@@ -97,6 +99,7 @@ public class EditPropertyFragment extends Fragment {
         itemsEditText = (EditText) rootView.findViewById(R.id.itemsEditText);
         detailsEditText = (EditText) rootView.findViewById(R.id.detailsEditText);
         addressEditText = (EditText) rootView.findViewById(R.id.addressEditText);
+        tenantNameEditText = (EditText) rootView.findViewById(R.id.tenantNameEditText);
         editPropertyButton = (Button) rootView.findViewById(R.id.editPropertyButton);
     }
 

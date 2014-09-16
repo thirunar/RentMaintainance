@@ -123,10 +123,34 @@
             android:layout_height="wrap_content"
             android:id="@+id/addressEditText"
             android:layout_below="@+id/addressTextView"
+            android:inputType="text"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignRight="@+id/detailsEditText"
             android:layout_alignEnd="@+id/detailsEditText"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tenant_name"
+            android:layout_marginTop="5dp"
+            android:id="@+id/tenantNameTextView"
+            android:layout_below="@+id/addressEditText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tenantNameEditText"
+            android:layout_below="@+id/tenantNameTextView"
+            android:inputType="text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/detailsEditText"
+            android:layout_alignEnd="@+id/detailsEditText"/>
+
+
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
