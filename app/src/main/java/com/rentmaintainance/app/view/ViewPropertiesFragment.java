@@ -20,7 +20,14 @@ public class ViewPropertiesFragment extends Fragment {
     private ListView propertiesListView;
     private Context context;
 
-    public ViewPropertiesFragment() {
+    public ViewPropertiesFragment(Activity activity) {
+        Context.getInstance().updateApplicationContext(activity.getApplicationContext());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
     }
 
     @Override

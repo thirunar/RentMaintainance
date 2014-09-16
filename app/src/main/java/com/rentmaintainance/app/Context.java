@@ -1,19 +1,22 @@
 package com.rentmaintainance.app;
 
-import com.rentmaintainance.app.repository.AllProperties;
-import com.rentmaintainance.app.repository.PropertyRepository;
-import com.rentmaintainance.app.repository.Repository;
-import com.rentmaintainance.app.repository.TenantRepository;
+import com.rentmaintainance.app.repository.*;
+import com.rentmaintainance.app.service.PropertyService;
+import com.rentmaintainance.app.service.TenantService;
 
 public class Context {
     private android.content.Context applicationContext;
     public static Context context = new Context();
 
+    private PropertyService propertyService;
+    private TenantService tenantService;
+
     private Repository repository;
     private PropertyRepository propertyRepository;
     private TenantRepository tenantRepository;
 
-    private AllProperties properties;
+    private AllProperties allProperties;
+    private AllTenants allTenants;
 
     public static Context getInstance() {
         return context;
@@ -21,7 +24,7 @@ public class Context {
 
     public Repository initRepository() {
         if (repository == null) {
-            return new Repository(applicationContext(), getPropertyRepository());
+            this.repository = new Repository(applicationContext(), getTenantRepository(), getPropertyRepository());
         }
         return repository;
     }
@@ -51,10 +54,32 @@ public class Context {
 
     public AllProperties allProperties() {
         initRepository();
-        if (properties == null) {
-            return new AllProperties(getPropertyRepository());
+        if (allProperties == null) {
+            this.allProperties = new AllProperties(getPropertyRepository());
         }
-        return properties;
+        return allProperties;
+    }
+
+    public AllTenants allTenants() {
+        initRepository();
+        if (allTenants == null) {
+            this.allTenants = new AllTenants(getTenantRepository());
+        }
+        return allTenants;
+    }
+
+    public TenantService getTenantService() {
+        if (tenantService == null) {
+            this.tenantService = new TenantService();
+        }
+        return tenantService;
+    }
+
+    public PropertyService getPropertyService() {
+        if (propertyService == null) {
+            this.propertyService = new PropertyService();
+        }
+        return propertyService;
     }
 
 }

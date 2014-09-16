@@ -40,12 +40,17 @@ public class MainActivity extends ActionBarActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (position == 0)
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, new AddPropertyFragment())
+                    .replace(R.id.container, new AddPropertyFragment(this))
                     .commit();
 
         if (position == 1)
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, new ViewPropertiesFragment())
+                    .replace(R.id.container, new ViewPropertiesFragment(this))
+                    .commit();
+
+        if (position == 2)
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, new AddTenantFragment(this))
                     .commit();
     }
 

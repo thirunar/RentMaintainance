@@ -10,6 +10,9 @@ import com.rentmaintainance.app.utils.DateUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.rentmaintainance.app.repository.TenantRepository.KEY_ID;
+import static com.rentmaintainance.app.repository.TenantRepository.TABLE_TENANT;
+
 public class PropertyRepository extends MaintainceRepository {
 
     public static final String TABLE_PROPERTY = "property";
@@ -19,16 +22,24 @@ public class PropertyRepository extends MaintainceRepository {
     public static final String KEY_ITEMS = "items";
     public static final String KEY_DETAILS = "details";
     public static final String KEY_ADDRESS = "address";
-    public static final String KEY_DATE = "date";
+    public static final String KEY_DATE = "dateAdded";
+    public static final String KEY_TENANT = "tenantId";
     public static final String CREATE_PROPERTY = "CREATE TABLE "
-            + TABLE_PROPERTY + "("
-            + KEY_HOUSE_NUMBER + " TEXT PRIMARY KEY,"
-            + KEY_NAME + " TEXT,"
-            + KEY_RENT + " FLOAT,"
-            + KEY_ITEMS + " TEXT,"
+            + TABLE_PROPERTY + "( "
+            + KEY_HOUSE_NUMBER + " TEXT PRIMARY KEY, "
+            + KEY_NAME + " TEXT, "
+            + KEY_RENT + " FLOAT, "
+            + KEY_ITEMS + " TEXT, "
             + KEY_DETAILS + " TEXT, "
             + KEY_ADDRESS + " TEXT, "
-            + KEY_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP" + ")";
+            + KEY_TENANT + " TEXT, "
+            + KEY_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP, "
+            + "FOREIGN KEY (" + KEY_TENANT + ") REFERENCES " + TABLE_TENANT + " (" + KEY_ID + ") " + ")";
+
+    @Override
+    protected void onCreate(SQLiteDatabase database) {
+        database.execSQL(CREATE_PROPERTY);
+    }
 
     public long addPropertyDetails(Property property) throws SQLiteException {
         SQLiteDatabase db = masterRepository.getWritableDatabase();
@@ -41,6 +52,7 @@ public class PropertyRepository extends MaintainceRepository {
         values.put(KEY_DETAILS, property.getDetails());
         values.put(KEY_ADDRESS, property.getAddress());
         values.put(KEY_DATE, DateUtil.formatDateTime(property.getDate()));
+        values.put(KEY_TENANT, property.getTenantId());
 
         long rowId = db.insert(TABLE_PROPERTY, KEY_HOUSE_NUMBER, values);
 
@@ -85,15 +97,11 @@ public class PropertyRepository extends MaintainceRepository {
             property.setItems(cursor.getString(3));
             property.setDetails(cursor.getString(4));
             property.setAddress(cursor.getString(5));
-            property.setDate(DateUtil.getDateTime(cursor.getString(6)));
+            property.setDate(DateUtil.getDateTime(cursor.getString(7)));
             properties.add(property);
             cursor.moveToNext();
         }
+        cursor.close();
         return properties;
-    }
-
-    @Override
-    protected void onCreate(SQLiteDatabase database) {
-        database.execSQL(CREATE_PROPERTY);
     }
 }

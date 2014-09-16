@@ -85,7 +85,6 @@ public class ViewPropertyFragment extends Fragment {
         addressValueTextView = (TextView) rootView.findViewById(R.id.addressValueTextView);
         editPropertyButton = (Button) rootView.findViewById(R.id.editPropertyButton);
         context = Context.getInstance().updateApplicationContext(getActivity().getApplicationContext());
-        context.initRepository();
     }
 
     @Override

@@ -18,6 +18,13 @@
     <string name="edit_property">Edit Property</string>
     <string name="date">Date</string>
     <string name="address">Address</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tenant_name">Tenant Name</string>
+    <string name="number_of_occupants">Number of Occupants</string>
+    <string name="items_given">Items Given</string>
+    <string name="property">Property</string>
+    <string name="date_occupied">Date Occupied</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="status">Status</string>
+    <string name="add_tenant">Add Tenant</string>
 
 </resources>

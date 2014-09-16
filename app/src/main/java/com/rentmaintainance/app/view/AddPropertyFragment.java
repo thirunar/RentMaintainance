@@ -12,11 +12,12 @@ import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
 import com.rentmaintainance.app.model.Property;
 import com.rentmaintainance.app.repository.AllProperties;
+import com.rentmaintainance.app.service.PropertyService;
 import com.rentmaintainance.app.utils.DoubleUtil;
 
 import java.util.Date;
 
-public class AddPropertyFragment extends Fragment {
+public class AddPropertyFragment extends Fragment implements View.OnClickListener{
 
     private EditText houseNumberEditText;
     private EditText houseNameEditText;
@@ -27,8 +28,14 @@ public class AddPropertyFragment extends Fragment {
     private Button addPropertyButton;
     private Context context;
     private AllProperties allProperties;
+    private EditText tenantNameEditText;
 
-    public AddPropertyFragment() {
+    private PropertyService propertyService;
+
+    public AddPropertyFragment(Activity activity) {
+        context = Context.getInstance();
+        Context.getInstance().updateApplicationContext(activity.getApplicationContext());
+        propertyService = context.getPropertyService();
     }
 
     @Override
@@ -38,14 +45,10 @@ public class AddPropertyFragment extends Fragment {
 
         initializeView(rootView);
 
-
-        allProperties = Context.getInstance().allProperties();
-
         addPropertyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Property property = getPropertyDetails();
-                allProperties.addPropertyDetails(property);
+                propertyService.addProperty(getPropertyDetails());
             }
         });
 
@@ -74,10 +77,19 @@ public class AddPropertyFragment extends Fragment {
         detailsEditText = (EditText) rootView.findViewById(R.id.detailsEditText);
         addressEditText = (EditText) rootView.findViewById(R.id.addressEditText);
         addPropertyButton = (Button) rootView.findViewById(R.id.addPropertyButton);
+        tenantNameEditText = (EditText) rootView.findViewById(R.id.tenantNameEditText);
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.addPropertyButton:
+                propertyService.addProperty(getPropertyDetails());
+        }
     }
 }

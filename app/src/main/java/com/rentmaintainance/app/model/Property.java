@@ -14,6 +14,7 @@ public class Property implements Parcelable {
     private String details;
     private String address;
     private Date date;
+    private String tenantId;
 
     public Property() {
 
@@ -26,7 +27,8 @@ public class Property implements Parcelable {
         items = parcel.readString();
         details = parcel.readString();
         address = parcel.readString();
-        date = new Date(parcel.readLong());
+        date = (Date) parcel.readValue(Date.class.getClassLoader());
+        tenantId = parcel.readString();
     }
 
 
@@ -86,6 +88,14 @@ public class Property implements Parcelable {
         this.address = address;
     }
 
+    public String getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(String tenantId) {
+        this.tenantId = tenantId;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -99,7 +109,8 @@ public class Property implements Parcelable {
         dest.writeString(items);
         dest.writeString(details);
         dest.writeString(address);
-        dest.writeLong(date.getTime());
+        dest.writeValue(date);
+        dest.writeString(tenantId);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -111,5 +122,7 @@ public class Property implements Parcelable {
             return new Property[size];
         }
     };
+
+
 }
 
