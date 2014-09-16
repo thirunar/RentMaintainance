@@ -4,7 +4,8 @@
     <string name="app_name">RentMaintainance</string>
     <string name="title_add_property">Add Property</string>
     <string name="title_view_property">View Property</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_add_tenant">Add Tenant</string>
+    <string name="title_view_tenant">View Tenant</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>

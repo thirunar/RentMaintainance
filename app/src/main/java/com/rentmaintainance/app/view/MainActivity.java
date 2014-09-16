@@ -35,8 +35,6 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        // update the main content by replacing fragments
-        // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (position == 0)
             fragmentManager.beginTransaction()
@@ -63,7 +61,7 @@ public class MainActivity extends ActionBarActivity
                 mTitle = getString(R.string.title_view_property);
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                mTitle = getString(R.string.title_add_tenant);
                 break;
         }
     }
@@ -79,9 +77,6 @@ public class MainActivity extends ActionBarActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            // Only show items in the action bar relevant to this screen
-            // if the drawer is not showing. Otherwise, let the drawer
-            // decide what to show in the action bar.
             getMenuInflater().inflate(R.menu.main, menu);
             restoreActionBar();
             return true;
@@ -91,9 +86,6 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
