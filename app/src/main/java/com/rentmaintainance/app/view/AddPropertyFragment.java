@@ -70,8 +70,10 @@ public class AddPropertyFragment extends Fragment implements View.OnClickListene
     }
 
     private void initializeView(View rootView) {
+
         houseNumberEditText = (EditText) rootView.findViewById(R.id.houseNumberEditText);
         houseNameEditText = (EditText) rootView.findViewById(R.id.houseNameEditText);
+        rootView.findViewById(R.id.houseNumberTextView1);
         rentEditText = (EditText) rootView.findViewById(R.id.rentEditText);
         itemsEditText = (EditText) rootView.findViewById(R.id.itemsEditText);
         detailsEditText = (EditText) rootView.findViewById(R.id.detailsEditText);
