@@ -1,6 +1,7 @@
 package com.rentmaintainance.app;
 
 import com.rentmaintainance.app.repository.*;
+import com.rentmaintainance.app.service.ExpenseService;
 import com.rentmaintainance.app.service.IncomeService;
 import com.rentmaintainance.app.service.PropertyService;
 import com.rentmaintainance.app.service.TenantService;
@@ -12,15 +13,18 @@ public class Context {
     private PropertyService propertyService;
     private TenantService tenantService;
     private IncomeService incomeService;
+    private ExpenseService expenseService;
 
     private Repository repository;
     private PropertyRepository propertyRepository;
     private TenantRepository tenantRepository;
     private IncomeRepository incomeRepository;
+    private ExpenseRepository expenseRepository;
 
     private AllProperties allProperties;
     private AllTenants allTenants;
     private AllIncome allIncome;
+    private AllExpense allExpense;
 
     public static Context getInstance() {
         return context;
@@ -52,6 +56,13 @@ public class Context {
             this.incomeRepository = new IncomeRepository();
         }
         return incomeRepository;
+    }
+
+    private ExpenseRepository getExpenseRepository() {
+        if (expenseRepository == null) {
+            this.expenseRepository = new ExpenseRepository();
+        }
+        return expenseRepository;
     }
 
     public android.content.Context applicationContext() {
@@ -87,6 +98,14 @@ public class Context {
         return allIncome;
     }
 
+    public AllExpense allExpense() {
+        initRepository();
+        if (allExpense == null) {
+            this.allExpense = new AllExpense(getExpenseRepository());
+        }
+        return allExpense;
+    }
+
     public TenantService getTenantService() {
         if (tenantService == null) {
             this.tenantService = new TenantService();
@@ -106,6 +125,13 @@ public class Context {
             this.incomeService = new IncomeService();
         }
         return incomeService;
+    }
+
+    public ExpenseService getExpenseService() {
+        if (expenseService == null) {
+            this.expenseService = new ExpenseService();
+        }
+        return expenseService;
     }
 
 }

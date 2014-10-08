@@ -55,6 +55,10 @@ public class MainActivity extends ActionBarActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new AddIncomeFragment(this))
                     .commit();
+        if (position == 5)
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, new AddExpenseFragment(this))
+                    .commit();
     }
 
     public void onSectionAttached(int number) {

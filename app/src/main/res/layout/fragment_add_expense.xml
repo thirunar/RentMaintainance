@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context="com.rentmaintainance.app.view.AddIncomeFragment">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/house_number"
+            android:id="@+id/houseNumberTextView"
+            android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/houseNumberEditText"
+            android:layout_below="@+id/houseNumberTextView"
+            android:maxLines="1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:inputType="text"
+            android:layout_alignParentEnd="true"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            android:id="@+id/dateTextView"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/houseNumberEditText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dateEditText"
+            android:layout_below="@+id/dateTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:maxLines="1"
+            android:inputType="date" android:layout_alignRight="@+id/houseNumberEditText"
+            android:layout_alignEnd="@+id/houseNumberEditText"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/amount"
+            android:id="@+id/amountTextView"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/dateEditText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/amountEditText"
+            android:layout_below="@+id/amountTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:maxLines="1"
+            android:inputType="date"
+            android:layout_alignRight="@+id/dateEditText"
+            android:layout_alignEnd="@+id/dateEditText"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details"
+            android:layout_marginTop="5dp"
+            android:id="@+id/detailsTextView"
+            android:layout_below="@+id/amountEditText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailsEditText"
+            android:layout_below="@+id/detailsTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:inputType="text" android:layout_alignRight="@+id/amountEditText"
+            android:layout_alignEnd="@+id/amountEditText"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category"
+            android:layout_marginTop="5dp"
+            android:id="@+id/categoryTextView"
+            android:layout_below="@+id/detailsEditText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoryEditText"
+            android:layout_below="@+id/categoryTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:inputType="text"
+            android:layout_alignRight="@+id/amountEditText"
+            android:layout_alignEnd="@+id/amountEditText"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_expense"
+            android:id="@+id/addExpenseButton"
+            android:layout_below="@+id/categoryEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="58dp"/>
+
+
+</RelativeLayout>

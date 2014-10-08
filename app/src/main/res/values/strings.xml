@@ -7,6 +7,7 @@
     <string name="title_add_tenant">Add Tenant</string>
     <string name="title_view_tenant">View Tenant</string>
     <string name="title_add_income">Add Income</string>
+    <string name="title_add_expense">Add Expense</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
@@ -16,6 +17,7 @@
     <string name="rent">Rent</string>
     <string name="items">Items</string>
     <string name="details">Details</string>
+    <string name="category">Category</string>
     <string name="add_property">Add Property</string>
     <string name="edit_property">Edit Property</string>
     <string name="date">Date</string>
@@ -30,5 +32,6 @@
     <string name="add_tenant">Add Tenant</string>
     <string name="amount">Amount</string>
     <string name="add_income">Add Income</string>
+    <string name="add_expense">Add Expense</string>
 
 </resources>

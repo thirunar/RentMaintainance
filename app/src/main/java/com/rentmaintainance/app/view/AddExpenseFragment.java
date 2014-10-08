@@ -10,43 +10,45 @@ import android.widget.Button;
 import android.widget.EditText;
 import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
-import com.rentmaintainance.app.model.Income;
-import com.rentmaintainance.app.service.IncomeService;
+import com.rentmaintainance.app.model.Expense;
+import com.rentmaintainance.app.service.ExpenseService;
 import com.rentmaintainance.app.utils.DateUtil;
 
-public class AddIncomeFragment extends Fragment implements View.OnClickListener {
+public class AddExpenseFragment extends Fragment implements View.OnClickListener {
 
     private Context context;
     private EditText houseNumberEditText;
     private EditText dateEditText;
     private EditText detailsEditText;
     private EditText amountEditText;
-    private Button addIncomeButton;
-    private IncomeService incomeService;
+    private Button addExpenseButton;
+    private ExpenseService expenseService;
+    private EditText categoryEditText;
 
-    public AddIncomeFragment(Activity activity) {
+    public AddExpenseFragment(Activity activity) {
         context = Context.getInstance();
         Context.getInstance().updateApplicationContext(activity);
-        incomeService = context.getIncomeService();
+        expenseService = context.getExpenseService();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_add_income, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_add_expense, container, false);
 
         initializeView(rootView);
 
         return rootView;
     }
 
-    private Income getIncomeDetails() {
-        Income income = new Income();
-        income.withPropertyId(houseNumberEditText.getText().toString())
+    private Expense getExpenseDetails() {
+        Expense expense = new Expense();
+        expense.withPropertyId(houseNumberEditText.getText().toString())
                 .withAmount(Float.parseFloat(amountEditText.getText().toString()))
                 .withDate(DateUtil.getDateTime(dateEditText.getText().toString()))
-                .withDetails(detailsEditText.getText().toString());
-        return income;
+                .withDetails(detailsEditText.getText().toString())
+                .withCategory(categoryEditText.getText().toString());
+        return expense;
     }
 
     private void initializeView(View rootView) {
@@ -54,7 +56,8 @@ public class AddIncomeFragment extends Fragment implements View.OnClickListener 
         dateEditText = (EditText) rootView.findViewById(R.id.dateEditText);
         detailsEditText = (EditText) rootView.findViewById(R.id.detailsEditText);
         amountEditText = (EditText) rootView.findViewById(R.id.amountEditText);
-        addIncomeButton = (Button) rootView.findViewById(R.id.addIncomeButton);
+        categoryEditText = (EditText) rootView.findViewById(R.id.categoryEditText);
+        addExpenseButton = (Button) rootView.findViewById(R.id.addExpenseButton);
     }
 
     @Override
@@ -66,8 +69,8 @@ public class AddIncomeFragment extends Fragment implements View.OnClickListener 
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.addIncomeButton:
-                incomeService.addIncome(getIncomeDetails());
+            case R.id.addExpenseButton:
+                expenseService.addExpense(getExpenseDetails());
         }
     }
 }
