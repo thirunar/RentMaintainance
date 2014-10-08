@@ -1,6 +1,7 @@
 package com.rentmaintainance.app;
 
 import com.rentmaintainance.app.repository.*;
+import com.rentmaintainance.app.service.IncomeService;
 import com.rentmaintainance.app.service.PropertyService;
 import com.rentmaintainance.app.service.TenantService;
 
@@ -10,13 +11,16 @@ public class Context {
 
     private PropertyService propertyService;
     private TenantService tenantService;
+    private IncomeService incomeService;
 
     private Repository repository;
     private PropertyRepository propertyRepository;
     private TenantRepository tenantRepository;
+    private IncomeRepository incomeRepository;
 
     private AllProperties allProperties;
     private AllTenants allTenants;
+    private AllIncome allIncome;
 
     public static Context getInstance() {
         return context;
@@ -24,7 +28,7 @@ public class Context {
 
     public Repository initRepository() {
         if (repository == null) {
-            this.repository = new Repository(applicationContext(), getTenantRepository(), getPropertyRepository());
+            this.repository = new Repository(applicationContext(), getTenantRepository(), getPropertyRepository(), getIncomeRepository());
         }
         return repository;
     }
@@ -41,6 +45,13 @@ public class Context {
             this.tenantRepository = new TenantRepository();
         }
         return tenantRepository;
+    }
+
+    private IncomeRepository getIncomeRepository() {
+        if (incomeRepository == null) {
+            this.incomeRepository = new IncomeRepository();
+        }
+        return incomeRepository;
     }
 
     public android.content.Context applicationContext() {
@@ -68,6 +79,14 @@ public class Context {
         return allTenants;
     }
 
+    public AllIncome allIncome() {
+        initRepository();
+        if (allIncome == null) {
+            this.allIncome = new AllIncome(getIncomeRepository());
+        }
+        return allIncome;
+    }
+
     public TenantService getTenantService() {
         if (tenantService == null) {
             this.tenantService = new TenantService();
@@ -80,6 +99,13 @@ public class Context {
             this.propertyService = new PropertyService();
         }
         return propertyService;
+    }
+
+    public IncomeService getIncomeService() {
+        if (incomeService == null) {
+            this.incomeService = new IncomeService();
+        }
+        return incomeService;
     }
 
 }

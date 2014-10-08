@@ -23,7 +23,7 @@ public class Tenant {
         this.status = status;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
@@ -32,7 +32,7 @@ public class Tenant {
         return this;
     }
 
-    public String getPhoneNumber() {
+    public String phoneNumber() {
         return phoneNumber;
     }
 
@@ -41,7 +41,7 @@ public class Tenant {
         return this;
     }
 
-    public Date getDateOccupied() {
+    public Date dateOccupied() {
         return dateOccupied;
     }
 
@@ -50,7 +50,7 @@ public class Tenant {
         return this;
     }
 
-    public Date getDateVacate() {
+    public Date dateVacate() {
         return dateVacate;
     }
 
@@ -59,7 +59,7 @@ public class Tenant {
         return this;
     }
 
-    public String getStatus() {
+    public String status() {
         return status;
     }
 
@@ -68,7 +68,7 @@ public class Tenant {
         return this;
     }
 
-    public String getId() {
+    public String id() {
         return id;
     }
 

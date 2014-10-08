@@ -6,6 +6,7 @@
     <string name="title_view_property">View Property</string>
     <string name="title_add_tenant">Add Tenant</string>
     <string name="title_view_tenant">View Tenant</string>
+    <string name="title_add_income">Add Income</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
@@ -27,5 +28,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="status">Status</string>
     <string name="add_tenant">Add Tenant</string>
+    <string name="amount">Amount</string>
+    <string name="add_income">Add Income</string>
 
 </resources>

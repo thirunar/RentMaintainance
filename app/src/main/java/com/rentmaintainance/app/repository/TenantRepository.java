@@ -37,10 +37,10 @@ public class TenantRepository extends MaintainceRepository {
 
         ContentValues values = new ContentValues();
         values.put(KEY_ID, UUID.randomUUID().toString());
-        values.put(KEY_NAME, tenant.getName());
-        values.put(KEY_STATUS, tenant.getStatus());
-        values.put(KEY_DATE_OCCUPIED, DateUtil.formatDateTime(tenant.getDateOccupied()));
-        values.put(KEY_PHONE_NUMBER, tenant.getPhoneNumber());
+        values.put(KEY_NAME, tenant.name());
+        values.put(KEY_STATUS, tenant.status());
+        values.put(KEY_DATE_OCCUPIED, DateUtil.formatDateTime(tenant.dateOccupied()));
+        values.put(KEY_PHONE_NUMBER, tenant.phoneNumber());
 
         long rowId = db.insert(TABLE_TENANT, KEY_ID, values);
 
