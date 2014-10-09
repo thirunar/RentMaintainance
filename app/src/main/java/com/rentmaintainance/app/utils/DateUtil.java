@@ -16,7 +16,7 @@ public class DateUtil {
 
     public static Date getDateTime(String date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                "yyyy-MM-dd", Locale.getDefault());
         try {
             return dateFormat.parse(date);
         } catch (ParseException e) {

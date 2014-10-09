@@ -1,10 +1,14 @@
 package com.rentmaintainance.app.repository;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import com.rentmaintainance.app.model.Income;
 import com.rentmaintainance.app.utils.DateUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.rentmaintainance.app.repository.PropertyRepository.KEY_HOUSE_NUMBER;
 import static com.rentmaintainance.app.repository.PropertyRepository.TABLE_PROPERTY;
@@ -44,5 +48,33 @@ public class IncomeRepository extends MaintainceRepository {
             throw new SQLiteException("Error inserting Property");
 
         return rowId;
+    }
+
+    public List<Income> getAllIncome() {
+        String query = "SELECT * FROM " + TABLE_INCOME;
+        SQLiteDatabase db = masterRepository.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        cursor.moveToFirst();
+        return readAllIncome(cursor);
+    }
+
+    private List<Income> readAllIncome(Cursor cursor) {
+        ArrayList<Income> incomes = new ArrayList<Income>();
+
+        while (!cursor.isAfterLast()) {
+            Income income = new Income();
+
+            income.withPropertyId(cursor.getString(0));
+            income.withAmount(cursor.getFloat(1));
+            income.withDetails(cursor.getString(2));
+            income.withDate(DateUtil.getDateTime(cursor.getString(3)));
+            incomes.add(income);
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return incomes;
     }
 }

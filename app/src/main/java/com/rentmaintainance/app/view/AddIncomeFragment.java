@@ -36,6 +36,12 @@ public class AddIncomeFragment extends Fragment implements View.OnClickListener 
         View rootView = inflater.inflate(R.layout.fragment_add_income, container, false);
 
         initializeView(rootView);
+        addIncomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                incomeService.addIncome(getIncomeDetails());
+            }
+        });
 
         return rootView;
     }

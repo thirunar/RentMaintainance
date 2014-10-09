@@ -7,6 +7,7 @@
     <string name="title_add_tenant">Add Tenant</string>
     <string name="title_view_tenant">View Tenant</string>
     <string name="title_add_income">Add Income</string>
+    <string name="title_view_income">View Income</string>
     <string name="title_add_expense">Add Expense</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
