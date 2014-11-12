@@ -13,7 +13,7 @@ import java.util.List;
 import static com.rentmaintainance.app.repository.TenantRepository.KEY_ID;
 import static com.rentmaintainance.app.repository.TenantRepository.TABLE_TENANT;
 
-public class PropertyRepository extends MaintainceRepository {
+public class PropertyRepository extends MaintenanceRepository {
 
     public static final String TABLE_PROPERTY = "property";
     public static final String KEY_HOUSE_NUMBER = "houseNumber";

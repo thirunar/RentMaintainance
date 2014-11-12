@@ -14,7 +14,7 @@ import com.rentmaintainance.app.model.Property;
 
 import static com.rentmaintainance.app.AllConstants.PROPERTY_STRING;
 
-public class ViewPropertyFragment extends Fragment {
+public class ViewPropertyFragment extends android.app.Fragment {
 
     private TextView houseNumberValueTextView;
     private TextView houseNameValueTextView;

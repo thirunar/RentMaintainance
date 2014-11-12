@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.emilsjolander.components.StickyScrollViewItems.StickyScrollView
+
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:id="@+id/sticky_scroll"
-        >
+        android:layout_width="match_parent">
 
-    <RelativeLayout
+    <com.emilsjolander.components.StickyScrollViewItems.StickyScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
+            android:id="@+id/sticky_scroll"
             >
 
-        <FrameLayout
-                android:id="@+id/header"
+        <RelativeLayout
+                android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:layout_height="225dp">
+                >
 
-            <com.rentmaintainance.app.customviews.KenBurnsView
-                    android:id="@+id/header_picture"
+            <FrameLayout
+                    android:id="@+id/header"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="225dp">
+
+                <com.rentmaintainance.app.customviews.KenBurnsView
+                        android:id="@+id/header_picture"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+            </FrameLayout>
+
+            <TextView
+                    android:layout_height="60dp"
+                    android:layout_width="match_parent"
+                    android:id="@+id/placeHolder"
+                    android:layout_below="@id/header"
+                    android:text="Properties"
+                    android:tag="sticky-hastransparancy"
                     />
-        </FrameLayout>
+            <FrameLayout
+                    android:id="@+id/listLayout"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/placeHolder"
+                    android:layout_height="600dp">
 
-        <TextView
-                android:layout_height="60dp"
-                android:layout_width="match_parent"
-                android:id="@+id/placeHolder"
-                android:layout_below="@id/header"
-                android:text="Properties"
-                android:tag="sticky-hastransparancy"
-                />
-        <FrameLayout
-                android:id="@+id/listLayout"
-                android:layout_width="match_parent"
-                android:layout_below="@id/placeHolder"
-                android:layout_height="600dp">
+                <ListView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/propertiesListView"
+                        />
 
-            <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/propertiesListView"
-                    />
+            </FrameLayout>
+        </RelativeLayout>
 
-        </FrameLayout>
+    </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
 
-        <Button
-                android:id="@+id/addProperty"
-                android:layout_width="84dp"
-                android:layout_height="84dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_below="@id/placeHolder"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:tag="sticky-hastransparancy"
-                android:background="@drawable/ic_launcher"/>
-
-    </RelativeLayout>
-
-</com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
+    <fragment
+            android:id="@+id/fragment_bottom_menu"
+            android:name="com.rentmaintainance.app.view.BottomMenuFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"/>
+</RelativeLayout>

@@ -1,8 +1,8 @@
 package com.rentmaintainance.app.view;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,13 +17,14 @@ import com.rentmaintainance.app.model.Property;
 
 import java.util.List;
 
-public class ViewPropertiesFragment extends Fragment {
+public class ViewPropertiesFragment extends android.app.Fragment {
 
     private static final String TAG = "ViewPropertiesFragment";
     private ListView propertiesListView;
     private int defaultHeaderTopPos;
     private int contentFrameLayoutPos;
     private DrawerLayout drawerLayout;
+    private BottomMenuFragment bottomMenuFragment;
 
 
     public ViewPropertiesFragment(Activity activity) {
@@ -71,6 +72,19 @@ public class ViewPropertiesFragment extends Fragment {
 
         PropertiesListAdaptor propertiesListAdaptor = new PropertiesListAdaptor(getActivity().getApplicationContext(), properties);
         propertiesListView.setAdapter(propertiesListAdaptor);
+
+        bottomMenuFragment = (BottomMenuFragment) getFragmentManager().findFragmentById(R.id.fragment_bottom_menu);
+
+        bottomMenuFragment.plusButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new AddPropertyFragment(getActivity()))
+                        .commit();
+
+            }
+        });
     }
 
     @Override

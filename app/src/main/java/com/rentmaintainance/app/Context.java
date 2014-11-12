@@ -32,7 +32,7 @@ public class Context {
 
     public Repository initRepository() {
         if (repository == null) {
-            this.repository = new Repository(applicationContext(), getTenantRepository(), getPropertyRepository(), getIncomeRepository());
+            this.repository = new Repository(applicationContext(), getTenantRepository(), getPropertyRepository(), getIncomeRepository(), getExpenseRepository());
         }
         return repository;
     }

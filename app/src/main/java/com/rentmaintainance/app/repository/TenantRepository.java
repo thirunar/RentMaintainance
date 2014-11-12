@@ -8,7 +8,7 @@ import com.rentmaintainance.app.utils.DateUtil;
 
 import java.util.UUID;
 
-public class TenantRepository extends MaintainceRepository {
+public class TenantRepository extends MaintenanceRepository {
 
     public static final String TABLE_TENANT = "tenant";
 

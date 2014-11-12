@@ -18,7 +18,7 @@ import com.rentmaintainance.app.model.Property;
 
 import java.util.List;
 
-public class ViewIncomesFragment extends Fragment {
+public class ViewIncomesFragment extends android.app.Fragment {
 
     private static final String TAG = "ViewIncomesFragment";
     private ListView incomesListView;

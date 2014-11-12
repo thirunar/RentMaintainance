@@ -1,12 +1,14 @@
 package com.rentmaintainance.app.view;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
+import android.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
 
@@ -20,6 +22,7 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = Context.getInstance().updateApplicationContext(getApplicationContext());
@@ -35,7 +38,7 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
         if (position == 0)
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new AddPropertyFragment(this))
@@ -63,24 +66,20 @@ public class MainActivity extends ActionBarActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new ViewIncomesFragment(this))
                     .commit();
-    }
 
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_add_property);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_view_property);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_add_tenant);
-                break;
-        }
+        if (position == 7)
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, new ViewExpensesFragment(this))
+                    .commit();
+
     }
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setBackgroundDrawable(new ColorDrawable(R.drawable.abc_ab_transparent_light_holo));
+        actionBar.setStackedBackgroundDrawable(new ColorDrawable(R.drawable.abc_ab_transparent_light_holo));
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
@@ -99,10 +98,6 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 

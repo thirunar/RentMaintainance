@@ -1,15 +1,19 @@
 package com.rentmaintainance.app.repository;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import com.rentmaintainance.app.model.Expense;
 import com.rentmaintainance.app.utils.DateUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.rentmaintainance.app.repository.PropertyRepository.KEY_HOUSE_NUMBER;
 import static com.rentmaintainance.app.repository.PropertyRepository.TABLE_PROPERTY;
 
-public class ExpenseRepository extends MaintainceRepository {
+public class ExpenseRepository extends MaintenanceRepository {
 
     public static final String TABLE_EXPENSE = "expense";
     public static final String KEY_PROPERTY_ID = "propertyId";
@@ -48,4 +52,34 @@ public class ExpenseRepository extends MaintainceRepository {
 
         return rowId;
     }
+
+    public List<Expense> getAllExpense() {
+        String query = "SELECT * FROM " + TABLE_EXPENSE;
+        SQLiteDatabase db = masterRepository.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        cursor.moveToFirst();
+        return readAllExpense(cursor);
+    }
+
+    private List<Expense> readAllExpense(Cursor cursor) {
+        ArrayList<Expense> incomes = new ArrayList<Expense>();
+
+        while (!cursor.isAfterLast()) {
+            Expense income = new Expense();
+
+            income.withPropertyId(cursor.getString(0));
+            income.withAmount(cursor.getFloat(1));
+            income.withDetails(cursor.getString(2));
+            income.withCategory(cursor.getString(3));
+            income.withDate(DateUtil.getDateTime(cursor.getString(4)));
+            incomes.add(income);
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return incomes;
+    }
+
 }

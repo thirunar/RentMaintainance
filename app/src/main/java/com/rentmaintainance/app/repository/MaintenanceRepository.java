@@ -2,7 +2,7 @@ package com.rentmaintainance.app.repository;
 
 import android.database.sqlite.SQLiteDatabase;
 
-public abstract class MaintainceRepository {
+public abstract class MaintenanceRepository {
 
     protected Repository masterRepository;
 

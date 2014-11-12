@@ -14,7 +14,7 @@ import com.rentmaintainance.app.model.Income;
 import com.rentmaintainance.app.service.IncomeService;
 import com.rentmaintainance.app.utils.DateUtil;
 
-public class AddIncomeFragment extends Fragment implements View.OnClickListener {
+public class AddIncomeFragment extends android.app.Fragment implements View.OnClickListener {
 
     private Context context;
     private EditText houseNumberEditText;

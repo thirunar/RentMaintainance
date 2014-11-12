@@ -14,7 +14,7 @@ import com.rentmaintainance.app.model.Expense;
 import com.rentmaintainance.app.service.ExpenseService;
 import com.rentmaintainance.app.utils.DateUtil;
 
-public class AddExpenseFragment extends Fragment implements View.OnClickListener {
+public class AddExpenseFragment extends android.app.Fragment implements View.OnClickListener {
 
     private Context context;
     private EditText houseNumberEditText;
@@ -37,6 +37,13 @@ public class AddExpenseFragment extends Fragment implements View.OnClickListener
         View rootView = inflater.inflate(R.layout.fragment_add_expense, container, false);
 
         initializeView(rootView);
+
+        addExpenseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                expenseService.addExpense(getExpenseDetails());
+            }
+        });
 
         return rootView;
     }

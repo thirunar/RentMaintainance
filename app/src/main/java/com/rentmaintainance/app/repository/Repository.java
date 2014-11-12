@@ -10,20 +10,20 @@ import static com.rentmaintainance.app.AllConstants.DATABASE_VERSION;
 public class Repository extends SQLiteOpenHelper {
     private static final String LOG = "Repository";
 
-    private MaintainceRepository[] repositories;
+    private MaintenanceRepository[] repositories;
 
-    public Repository(Context context, MaintainceRepository... repositories) {
+    public Repository(Context context, MaintenanceRepository... repositories) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.repositories = repositories;
 
-        for (MaintainceRepository repository : repositories) {
+        for (MaintenanceRepository repository : repositories) {
             repository.updateMasterRepository(this);
         }
     }
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        for (MaintainceRepository repository : repositories) {
+        for (MaintenanceRepository repository : repositories) {
             repository.onCreate(database);
         }
     }

@@ -9,6 +9,7 @@
     <string name="title_add_income">Add Income</string>
     <string name="title_view_income">View Income</string>
     <string name="title_add_expense">Add Expense</string>
+    <string name="title_view_expense">View Expense</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
