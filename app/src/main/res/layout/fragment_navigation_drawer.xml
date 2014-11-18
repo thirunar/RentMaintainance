@@ -4,6 +4,7 @@
           android:layout_height="match_parent"
           android:choiceMode="singleChoice"
           android:divider="@android:color/transparent"
+          android:paddingTop="?attr/actionBarSize"
           android:dividerHeight="0dp"
           android:background="#cccc"
           tools:context="com.rentmaintainance.app.view.NavigationDrawerFragment"/>

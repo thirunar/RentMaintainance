@@ -25,6 +25,7 @@
               android:layout_width="@dimen/navigation_drawer_width"
               android:layout_height="match_parent"
               android:layout_gravity="start"
-              android:name="com.rentmaintainance.app.view.NavigationDrawerFragment"/>
+              android:paddingTop="?attr/actionBarSize"
+              class="com.rentmaintainance.app.view.NavigationDrawerFragment"/>
 
 </android.support.v4.widget.DrawerLayout>

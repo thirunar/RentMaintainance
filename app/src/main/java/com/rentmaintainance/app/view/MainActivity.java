@@ -2,7 +2,6 @@ package com.rentmaintainance.app.view;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -38,36 +37,30 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        FragmentManager fragmentManager = getFragmentManager();
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        getSupportFragmentManager().popBackStackImmediate();
         if (position == 0)
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, new AddPropertyFragment(this))
-                    .commit();
-
-        if (position == 1)
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new ViewPropertiesFragment(this))
                     .commit();
-
-        if (position == 2)
+        if (position == 1)
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new AddTenantFragment(this))
                     .commit();
-
-        if (position == 4)
+        if (position == 2)
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new AddIncomeFragment(this))
                     .commit();
-        if (position == 5)
+        if (position == 3)
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, new AddExpenseFragment(this))
+                    .replace(R.id.container, new AddIncomeFragment(this))
                     .commit();
-        if (position == 6)
+        if (position == 4)
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new ViewIncomesFragment(this))
                     .commit();
 
-        if (position == 7)
+        if (position == 5)
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new ViewExpensesFragment(this))
                     .commit();
