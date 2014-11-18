@@ -2,6 +2,7 @@ package com.rentmaintainance.app.view;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import com.rentmaintainance.app.utils.DoubleUtil;
 
 import java.util.Date;
 
-public class AddPropertyFragment extends android.app.Fragment implements View.OnClickListener{
+public class AddPropertyFragment extends Fragment implements View.OnClickListener {
 
     private EditText houseNumberEditText;
     private EditText houseNameEditText;

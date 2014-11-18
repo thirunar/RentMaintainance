@@ -7,18 +7,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import com.emilsjolander.components.StickyScrollViewItems.StickyScrollView;
 import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
 import com.rentmaintainance.app.customviews.KenBurnsView;
 import com.rentmaintainance.app.model.Income;
-import com.rentmaintainance.app.model.Property;
 
 import java.util.List;
 
-public class ViewIncomesFragment extends android.app.Fragment {
+public class ViewIncomesFragment extends Fragment {
 
     private static final String TAG = "ViewIncomesFragment";
     private ListView incomesListView;

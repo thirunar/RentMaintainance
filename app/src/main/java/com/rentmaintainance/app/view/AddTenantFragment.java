@@ -15,7 +15,7 @@ import com.rentmaintainance.app.service.TenantService;
 
 import java.util.Date;
 
-public class AddTenantFragment extends android.app.Fragment implements View.OnClickListener {
+public class AddTenantFragment extends Fragment implements View.OnClickListener {
 
     private Context context;
     private EditText tenantNameEditText;

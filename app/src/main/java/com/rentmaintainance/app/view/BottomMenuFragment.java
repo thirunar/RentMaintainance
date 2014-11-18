@@ -1,7 +1,5 @@
 package com.rentmaintainance.app.view;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import com.rentmaintainance.app.R;
 
-public class BottomMenuFragment extends Fragment implements OnClickListener {
+public class BottomMenuFragment extends android.support.v4.app.Fragment implements OnClickListener {
 
     private ImageButton plusButton;
 
@@ -27,9 +25,10 @@ public class BottomMenuFragment extends Fragment implements OnClickListener {
     public ImageButton plusButton() {
         return plusButton;
     }
+
     @Override
     public void onClick(View v) {
-            FragmentManager fragmentManager = getFragmentManager();
+        android.support.v4.app.FragmentManager fragmentManager = getFragmentManager();
         switch (v.getId()) {
             case R.id.plusButton:
                 fragmentManager.beginTransaction()
@@ -41,10 +40,3 @@ public class BottomMenuFragment extends Fragment implements OnClickListener {
     }
 }
 
-class Animal {
-
-}
-
-class Dog extends  Animal{
-
-}
