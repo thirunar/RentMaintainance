@@ -46,23 +46,15 @@ public class MainActivity extends ActionBarActivity
                     .commit();
         if (position == 1)
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, new AddTenantFragment(this))
+                    .replace(R.id.container, new ViewIncomesFragment(this))
                     .commit();
         if (position == 2)
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, new AddIncomeFragment(this))
+                    .replace(R.id.container, new ViewExpensesFragment(this))
                     .commit();
         if (position == 3)
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, new AddIncomeFragment(this))
-                    .commit();
-        if (position == 4)
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, new ViewIncomesFragment(this))
-                    .commit();
-        if (position == 5)
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, new ViewExpensesFragment(this))
+                    .replace(R.id.container, new AddTenantFragment(this))
                     .commit();
 
     }
