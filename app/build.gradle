@@ -42,4 +42,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:19.+'
     compile 'se.emilsjolander:StickyScrollViewItems:1.1.0'
     compile 'com.github.gabrielemariotti.cards:library:1.9.1'
+    compile 'com.melnykov:floatingactionbutton:1.1.0'
 }

@@ -1,12 +1,15 @@
 package com.rentmaintainance.app.view;
 
 import android.app.Activity;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.*;
+import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import com.emilsjolander.components.StickyScrollViewItems.StickyScrollView;
+import com.melnykov.fab.FloatingActionButton;
 import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
 import com.rentmaintainance.app.customviews.KenBurnsView;
@@ -14,6 +17,7 @@ import com.rentmaintainance.app.model.Property;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.internal.CardHeader;
+import it.gmariotti.cardslib.library.internal.CardThumbnail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +26,7 @@ public class ViewPropertiesFragment extends Fragment {
 
     private static final String TAG = "ViewPropertiesFragment";
     private ListView propertiesListView;
-    private float mActionBarHeight;
-    private BottomMenuFragment bottomMenuFragment;
-
-    private static View view;
+    private FloatingActionButton floatingActionButton;
 
 
     public ViewPropertiesFragment(Activity activity) {
@@ -42,18 +43,8 @@ public class ViewPropertiesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        if (view != null) {
-            ViewGroup parent = (ViewGroup) view.getParent();
-            if (parent != null)
-                parent.removeView(view);
-        }
-        try {
-            view = inflater.inflate(R.layout.fragment_view_properties, container, false);
-            initializeView(view);
-
-        } catch (InflateException ignored) {
-        }
-
+        View view = inflater.inflate(R.layout.fragment_view_properties, container, false);
+        initializeView(view);
         return view;
     }
 
@@ -61,12 +52,15 @@ public class ViewPropertiesFragment extends Fragment {
         setupKenBurnsView(rootView);
         setupStickyScrollView(rootView);
         setupPropertiesListView(rootView);
+        setupActionButton(rootView);
+    }
 
-        bottomMenuFragment = (BottomMenuFragment) getFragmentManager().findFragmentById(R.id.fragment_bottom_menu);
-        bottomMenuFragment.plusButton().setOnClickListener(new View.OnClickListener() {
+    private void setupActionButton(View rootView) {
+        floatingActionButton = (FloatingActionButton) rootView.findViewById(R.id.add_property_button);
+        final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                android.support.v4.app.FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new AddPropertyFragment(getActivity()))
                         .commit();
@@ -78,7 +72,6 @@ public class ViewPropertiesFragment extends Fragment {
         propertiesListView = (ListView) rootView.findViewById(R.id.propertiesListView);
         List<Property> properties = Context.getInstance().allProperties().getAllProperties();
         CardArrayAdapter propertiesArrayAdapter = new CardArrayAdapter(getActivity(), getCardsFor(properties));
-
         propertiesListView.setAdapter(propertiesArrayAdapter);
     }
 
@@ -93,6 +86,10 @@ public class ViewPropertiesFragment extends Fragment {
             card.setTitle(property.getName());
             card.addCardHeader(cardheader);
 
+            CardThumbnail cardThumbnail = new CardThumbnail(getActivity());
+            cardThumbnail.setDrawableResource(R.drawable.ic_home);
+
+            card.addCardThumbnail(cardThumbnail);
             cards.add(card);
         }
         return cards;
@@ -103,37 +100,10 @@ public class ViewPropertiesFragment extends Fragment {
         headerPicture.setResourceIds(R.drawable.picture0, R.drawable.picture1);
     }
 
-    private void setupStickyScrollView(final View rootView) {
+    private void setupStickyScrollView(View rootView) {
         StickyScrollView stickyScroll = (StickyScrollView) rootView.findViewById(R.id.sticky_scroll);
         stickyScroll.setShadowHeight(50);
-
-        final TypedArray styledAttributes = getActivity().getTheme().obtainStyledAttributes(
-                new int[]{android.R.attr.actionBarSize});
-        mActionBarHeight = styledAttributes.getDimension(0, 0);
-
-        stickyScroll.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
-            @Override
-            public void onScrollChanged() {
-                float y = rootView.findViewById(R.id.sticky_scroll).getScrollY();
-                if (getActivity() != null && y >= mActionBarHeight && getActivity().getActionBar().isShowing()) {
-                    getActivity().getActionBar().hide();
-                } else if (getActivity() != null && y == 0 && !getActivity().getActionBar().isShowing()) {
-                    getActivity().getActionBar().show();
-                }
-            }
-        });
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if (bottomMenuFragment != null)
-            getFragmentManager().beginTransaction().remove(bottomMenuFragment).commit();
-    }
 
 }

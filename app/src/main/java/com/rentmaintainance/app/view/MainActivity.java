@@ -1,5 +1,6 @@
 package com.rentmaintainance.app.view;
 
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -59,7 +60,6 @@ public class MainActivity extends ActionBarActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new ViewIncomesFragment(this))
                     .commit();
-
         if (position == 5)
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new ViewExpensesFragment(this))
@@ -69,13 +69,9 @@ public class MainActivity extends ActionBarActivity
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
-
-        actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setBackgroundDrawable(new ColorDrawable(R.drawable.abc_ab_transparent_light_holo));
-        actionBar.setStackedBackgroundDrawable(new ColorDrawable(R.drawable.abc_ab_transparent_light_holo));
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
     }
 
 

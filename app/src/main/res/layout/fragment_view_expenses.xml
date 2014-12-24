@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
+
     <com.emilsjolander.components.StickyScrollViewItems.StickyScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="match_parent"
@@ -55,10 +56,15 @@
         </RelativeLayout>
     </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
 
-    <fragment
-            android:id="@+id/fragment_bottom_menu"
-            android:name="com.rentmaintainance.app.view.BottomMenuFragment"
-            android:layout_width="match_parent"
+    <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/add_expense_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"/>
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_add"
+            />
+
 </RelativeLayout>

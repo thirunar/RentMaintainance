@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">RentMaintainance</string>
+    <string name="app_name">""</string>
     <string name="title_add_property">Add Property</string>
     <string name="title_view_property">View Property</string>
     <string name="title_add_tenant">Add Tenant</string>

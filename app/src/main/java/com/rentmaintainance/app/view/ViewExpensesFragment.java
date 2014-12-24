@@ -1,11 +1,14 @@
 package com.rentmaintainance.app.view;
 
 import android.app.Activity;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.*;
+import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import com.emilsjolander.components.StickyScrollViewItems.StickyScrollView;
+import com.melnykov.fab.FloatingActionButton;
 import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
 import com.rentmaintainance.app.customviews.KenBurnsView;
@@ -23,10 +26,9 @@ public class ViewExpensesFragment extends Fragment {
 
     private static final String TAG = "ViewExpensesFragment";
     private CardListView expenseListView;
-    private float mActionBarHeight;
-    private BottomMenuFragment bottomMenuFragment;
 
-    private static View view;
+    private View view;
+    private FloatingActionButton floatingActionButton;
 
     public ViewExpensesFragment(Activity activity) {
         Context.getInstance().updateApplicationContext(activity.getApplicationContext());
@@ -41,17 +43,8 @@ public class ViewExpensesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        if (view != null) {
-            ViewGroup parent = (ViewGroup) view.getParent();
-            if (parent != null)
-                parent.removeView(view);
-        }
-        try {
-            view = inflater.inflate(R.layout.fragment_view_expenses, container, false);
-            initializeView(view);
-        } catch (InflateException e) {
-
-        }
+        view = inflater.inflate(R.layout.fragment_view_expenses, container, false);
+        initializeView(view);
         return view;
     }
 
@@ -59,22 +52,18 @@ public class ViewExpensesFragment extends Fragment {
         setupKenBurnsView(rootView);
         setupStickyScrollView(rootView);
         setupExpenseListView(rootView);
-        setupBottomMenuFragment();
+        setupActionButton(rootView);
     }
 
-    private void setupBottomMenuFragment() {
-        bottomMenuFragment = (BottomMenuFragment) getFragmentManager().findFragmentById(R.id.fragment_bottom_menu);
-        bottomMenuFragment.plusButton().setOnClickListener(new View.OnClickListener() {
+    private void setupActionButton(View rootView) {
+        floatingActionButton = (FloatingActionButton) rootView.findViewById(R.id.add_expense_button);
+        final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity().getActionBar() != null) {
-                    getActivity().getActionBar().show();
-                }
-                android.support.v4.app.FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new AddExpenseFragment(getActivity()))
                         .commit();
-
             }
         });
     }
@@ -91,22 +80,6 @@ public class ViewExpensesFragment extends Fragment {
     private void setupStickyScrollView(final View rootView) {
         StickyScrollView stickyScroll = (StickyScrollView) rootView.findViewById(R.id.sticky_scroll);
         stickyScroll.setShadowHeight(50);
-
-        final TypedArray styledAttributes = getActivity().getTheme().obtainStyledAttributes(
-                new int[]{android.R.attr.actionBarSize});
-        mActionBarHeight = styledAttributes.getDimension(0, 0);
-
-        stickyScroll.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
-            @Override
-            public void onScrollChanged() {
-                float y = rootView.findViewById(R.id.sticky_scroll).getScrollY();
-                if (getActivity() != null && y >= mActionBarHeight && getActivity().getActionBar().isShowing()) {
-                    getActivity().getActionBar().hide();
-                } else if (getActivity() != null && y == 0 && !getActivity().getActionBar().isShowing()) {
-                    getActivity().getActionBar().show();
-                }
-            }
-        });
     }
 
     private void setupKenBurnsView(View rootView) {
@@ -132,13 +105,6 @@ public class ViewExpensesFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if (bottomMenuFragment != null)
-            getFragmentManager().beginTransaction().remove(bottomMenuFragment).commit();
     }
 
 }
