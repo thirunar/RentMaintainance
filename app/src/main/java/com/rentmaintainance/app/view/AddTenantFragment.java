@@ -12,8 +12,7 @@ import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.R;
 import com.rentmaintainance.app.model.Tenant;
 import com.rentmaintainance.app.service.TenantService;
-
-import java.util.Date;
+import com.rentmaintainance.app.utils.DateUtil;
 
 public class AddTenantFragment extends Fragment implements View.OnClickListener {
 
@@ -45,7 +44,7 @@ public class AddTenantFragment extends Fragment implements View.OnClickListener 
         Tenant tenant = new Tenant();
         tenant.withName(tenantNameEditText.getText().toString())
                 .withPhoneNumber(phoneNumberEditText.getText().toString())
-                .withDateOccupied(new Date(dateOccupiedEditText.getText().toString()))
+                .withDateOccupied(DateUtil.getDateTime(dateOccupiedEditText.getText().toString()))
                 .withStatus("yes");
         return tenant;
     }
@@ -55,6 +54,13 @@ public class AddTenantFragment extends Fragment implements View.OnClickListener 
         dateOccupiedEditText = (EditText) rootView.findViewById(R.id.dateOccupiedEditText);
         phoneNumberEditText = (EditText) rootView.findViewById(R.id.phoneNumberEditText);
         addTenantButton = (Button) rootView.findViewById(R.id.addTenantButton);
+
+        addTenantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tenantService.addTenant(getTenanantDetails());
+            }
+        });
     }
 
     @Override
@@ -67,7 +73,7 @@ public class AddTenantFragment extends Fragment implements View.OnClickListener 
 
         switch (view.getId()) {
             case R.id.addTenantButton:
-                tenantService.addTenant(getTenanantDetails());
+
         }
     }
 }

@@ -54,7 +54,7 @@ public class MainActivity extends ActionBarActivity
                     .commit();
         if (position == 3)
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, new AddTenantFragment(this))
+                    .replace(R.id.container, new ViewTenantsFragment(this))
                     .commit();
 
     }

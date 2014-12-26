@@ -1,12 +1,17 @@
 package com.rentmaintainance.app.repository;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import com.rentmaintainance.app.model.Tenant;
 import com.rentmaintainance.app.utils.DateUtil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+
+import static com.rentmaintainance.app.utils.DateUtil.getDateTime;
 
 public class TenantRepository extends MaintenanceRepository {
 
@@ -49,4 +54,32 @@ public class TenantRepository extends MaintenanceRepository {
 
         return rowId;
     }
+
+    public List<Tenant> getAllTenants() {
+        String query = "SELECT * FROM " + TABLE_TENANT;
+        SQLiteDatabase db = masterRepository.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        cursor.moveToFirst();
+        return readAllTenants(cursor);
+    }
+
+    private List<Tenant> readAllTenants(Cursor cursor) {
+        List<Tenant> tenants = new ArrayList<Tenant>();
+
+        while (!cursor.isAfterLast()) {
+            Tenant tenant = new Tenant();
+            tenant.withId(cursor.getString(0))
+                    .withName(cursor.getString(1))
+                    .withStatus(cursor.getString(2))
+                    .withDateOccupied(getDateTime(cursor.getString(3)))
+                    .withPhoneNumber(cursor.getString(5));
+            tenants.add(tenant);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return tenants;
+    }
+
 }
