@@ -58,7 +58,7 @@ public class ViewIncomesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new AddExpenseFragment(getActivity()))
+                        .replace(R.id.container, new AddIncomeFragment(getActivity()))
                         .commit();
             }
         });
