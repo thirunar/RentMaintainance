@@ -30,6 +30,7 @@
     <string name="property">Property</string>
     <string name="date_occupied">Date Occupied</string>
     <string name="phone_number">Phone Number</string>
+    <string name="security_deposit">Security Deposit</string>
     <string name="status">Status</string>
     <string name="add_tenant">Add Tenant</string>
     <string name="amount">Amount</string>

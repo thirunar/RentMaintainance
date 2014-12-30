@@ -10,17 +10,19 @@ public class Tenant {
     private Date dateOccupied;
     private Date dateVacate;
     private String status;
+    private Float securityDeposit;
 
     public Tenant() {
     }
 
-    public Tenant(String id, String name, String phoneNumber, Date dateOccupied, Date dateVacate, String status) {
+    public Tenant(String id, String name, String phoneNumber, Date dateOccupied, Date dateVacate, String status, Float securityDeposit) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.dateOccupied = dateOccupied;
         this.dateVacate = dateVacate;
         this.status = status;
+        this.securityDeposit = securityDeposit;
     }
 
     public String name() {
@@ -74,6 +76,15 @@ public class Tenant {
 
     public Tenant withId(String id) {
         this.id = id;
+        return this;
+    }
+
+    public Float securityDeposit() {
+        return securityDeposit;
+    }
+
+    public Tenant withSecurityDeposit(Float securityDeposit) {
+        this.securityDeposit = securityDeposit;
         return this;
     }
 }

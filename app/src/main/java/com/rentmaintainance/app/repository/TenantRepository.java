@@ -23,6 +23,7 @@ public class TenantRepository extends MaintenanceRepository {
     public static String KEY_DATE_OCCUPIED = "dateOccupied";
     public static String KEY_DATE_VACATED = "dateVacated";
     public static String KEY_PHONE_NUMBER = "phoneNumber";
+    public static String KEY_SECURITY_DEPOSIT = "securityDeposit";
     public static String CREATE_TENANT = "CREATE TABLE "
             + TABLE_TENANT + "("
             + KEY_ID + " TEXT PRIMARY KEY, "
@@ -30,6 +31,7 @@ public class TenantRepository extends MaintenanceRepository {
             + KEY_STATUS + " TEXT, "
             + KEY_DATE_OCCUPIED + " DATETIME DEFAULT CURRENT_TIMESTAMP, "
             + KEY_DATE_VACATED + " DATETIME, "
+            + KEY_SECURITY_DEPOSIT + " FLOAT, "
             + KEY_PHONE_NUMBER + " TEXT " + ")";
 
     @Override
@@ -45,6 +47,7 @@ public class TenantRepository extends MaintenanceRepository {
         values.put(KEY_NAME, tenant.name());
         values.put(KEY_STATUS, tenant.status());
         values.put(KEY_DATE_OCCUPIED, DateUtil.formatDateTime(tenant.dateOccupied()));
+        values.put(KEY_SECURITY_DEPOSIT, tenant.securityDeposit());
         values.put(KEY_PHONE_NUMBER, tenant.phoneNumber());
 
         long rowId = db.insert(TABLE_TENANT, KEY_ID, values);
@@ -74,12 +77,12 @@ public class TenantRepository extends MaintenanceRepository {
                     .withName(cursor.getString(1))
                     .withStatus(cursor.getString(2))
                     .withDateOccupied(getDateTime(cursor.getString(3)))
-                    .withPhoneNumber(cursor.getString(5));
+                    .withPhoneNumber(cursor.getString(6))
+                    .withSecurityDeposit(cursor.getFloat(5));
             tenants.add(tenant);
             cursor.moveToNext();
         }
         cursor.close();
         return tenants;
     }
-
 }

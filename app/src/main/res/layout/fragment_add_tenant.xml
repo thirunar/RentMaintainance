@@ -69,12 +69,33 @@
             android:layout_alignEnd="@+id/tenantNameEditText"
             android:inputType="phone"/>
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/security_deposit"
+            android:layout_marginTop="5dp"
+            android:id="@+id/securityDepositTextView"
+            android:layout_below="@+id/phoneNumberEditText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/securityDepositEditText"
+            android:layout_below="@+id/securityDepositTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/tenantNameEditText"
+            android:layout_alignEnd="@+id/tenantNameEditText"
+            android:inputType="numberDecimal"/>
+
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_tenant"
             android:id="@+id/addTenantButton"
-            android:layout_below="@+id/phoneNumberEditText"
+            android:layout_below="@+id/securityDepositEditText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="58dp"/>
 

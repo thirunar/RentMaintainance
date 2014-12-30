@@ -23,6 +23,7 @@ public class AddTenantFragment extends Fragment implements View.OnClickListener 
     private EditText statusEditText;
     private Button addTenantButton;
     private TenantService tenantService;
+    private EditText securityDepositEditText;
 
     public AddTenantFragment(Activity activity) {
         context = Context.getInstance();
@@ -45,6 +46,7 @@ public class AddTenantFragment extends Fragment implements View.OnClickListener 
         tenant.withName(tenantNameEditText.getText().toString())
                 .withPhoneNumber(phoneNumberEditText.getText().toString())
                 .withDateOccupied(DateUtil.getDateTime(dateOccupiedEditText.getText().toString()))
+                .withSecurityDeposit(Float.parseFloat(securityDepositEditText.getText().toString()))
                 .withStatus("yes");
         return tenant;
     }
@@ -53,6 +55,7 @@ public class AddTenantFragment extends Fragment implements View.OnClickListener 
         tenantNameEditText = (EditText) rootView.findViewById(R.id.tenantNameEditText);
         dateOccupiedEditText = (EditText) rootView.findViewById(R.id.dateOccupiedEditText);
         phoneNumberEditText = (EditText) rootView.findViewById(R.id.phoneNumberEditText);
+        securityDepositEditText = (EditText) rootView.findViewById(R.id.securityDepositEditText);
         addTenantButton = (Button) rootView.findViewById(R.id.addTenantButton);
 
         addTenantButton.setOnClickListener(new View.OnClickListener() {
