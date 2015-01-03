@@ -22,6 +22,8 @@ import it.gmariotti.cardslib.library.internal.CardThumbnail;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.rentmaintainance.app.AllConstants.TENANT_STRING;
+
 public class ViewTenantsFragment extends Fragment {
 
     private static final String TAG = "ViewTenantsFragment";
@@ -78,21 +80,47 @@ public class ViewTenantsFragment extends Fragment {
 
     private List<Card> getCardsFor(List<Tenant> tenants) {
         List<Card> cards = new ArrayList<Card>();
-        for (Tenant tenant : tenants) {
-            CardHeader cardheader = new CardHeader(getActivity());
-            cardheader.setTitle(tenant.name());
+        for (final Tenant tenant : tenants) {
+            CardHeader cardheader = setupCardHeader(tenant);
+            Card card = setCardDetails(tenant, cardheader);
+            setCardThumbnail(card);
 
-            Card card = new Card(getActivity().getApplicationContext());
-            card.setTitle(tenant.phoneNumber());
-            card.addCardHeader(cardheader);
-
-            CardThumbnail cardThumbnail = new CardThumbnail(getActivity());
-            cardThumbnail.setDrawableResource(R.drawable.ic_tenant);
-
-            card.addCardThumbnail(cardThumbnail);
+            final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            card.setOnClickListener(new Card.OnCardClickListener() {
+                @Override
+                public void onClick(Card card, View view) {
+                    ViewTenantFragment fragment = new ViewTenantFragment(getActivity());
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(TENANT_STRING, tenant);
+                    fragment.setArguments(bundle);
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, fragment)
+                            .commit();
+                }
+            });
             cards.add(card);
         }
         return cards;
+    }
+
+    private void setCardThumbnail(Card card) {
+        CardThumbnail cardThumbnail = new CardThumbnail(getActivity());
+        cardThumbnail.setDrawableResource(R.drawable.ic_tenant);
+
+        card.addCardThumbnail(cardThumbnail);
+    }
+
+    private Card setCardDetails(Tenant tenant, CardHeader cardheader) {
+        Card card = new Card(getActivity().getApplicationContext());
+        card.setTitle(tenant.phoneNumber());
+        card.addCardHeader(cardheader);
+        return card;
+    }
+
+    private CardHeader setupCardHeader(Tenant tenant) {
+        CardHeader cardheader = new CardHeader(getActivity());
+        cardheader.setTitle(tenant.name());
+        return cardheader;
     }
 
     private void setupKenBurnsView(View rootView) {

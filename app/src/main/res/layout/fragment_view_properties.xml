@@ -51,6 +51,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/propertiesListView"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         card:list_card_layout_resourceID="@layout/list_card_thumbnail_layout"
                         />
 

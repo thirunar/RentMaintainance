@@ -1,8 +1,11 @@
 package com.rentmaintainance.app.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
-public class Tenant {
+public class Tenant implements Parcelable {
 
     private String id;
     private String name;
@@ -12,7 +15,14 @@ public class Tenant {
     private String status;
     private Float securityDeposit;
 
-    public Tenant() {
+    public Tenant(Parcel parcel) {
+        id = parcel.readString();
+        name = parcel.readString();
+        phoneNumber = parcel.readString();
+        dateOccupied = (Date) parcel.readValue(Date.class.getClassLoader());
+        dateVacate = (Date) parcel.readValue(Date.class.getClassLoader());
+        status = parcel.readString();
+        securityDeposit = parcel.readFloat();
     }
 
     public Tenant(String id, String name, String phoneNumber, Date dateOccupied, Date dateVacate, String status, Float securityDeposit) {
@@ -23,6 +33,10 @@ public class Tenant {
         this.dateVacate = dateVacate;
         this.status = status;
         this.securityDeposit = securityDeposit;
+    }
+
+    public Tenant() {
+
     }
 
     public String name() {
@@ -87,4 +101,31 @@ public class Tenant {
         this.securityDeposit = securityDeposit;
         return this;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(phoneNumber);
+        dest.writeValue(dateOccupied);
+        dest.writeValue(dateVacate);
+        dest.writeString(status);
+        dest.writeFloat(securityDeposit);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Tenant createFromParcel(Parcel in) {
+            return new Tenant(in);
+        }
+
+        public Tenant[] newArray(int size) {
+            return new Tenant[size];
+        }
+    };
+
 }

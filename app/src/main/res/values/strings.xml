@@ -22,6 +22,7 @@
     <string name="category">Category</string>
     <string name="add_property">Add Property</string>
     <string name="edit_property">Edit Property</string>
+    <string name="edit_tenant">Edit Tenant</string>
     <string name="date">Date</string>
     <string name="address">Address</string>
     <string name="tenant_name">Tenant Name</string>
