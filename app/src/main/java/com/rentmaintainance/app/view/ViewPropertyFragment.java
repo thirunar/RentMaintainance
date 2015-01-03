@@ -25,6 +25,10 @@ public class ViewPropertyFragment extends Fragment {
     private Button editPropertyButton;
     private Context context;
 
+    public ViewPropertyFragment(Activity activity) {
+        Context.getInstance().updateApplicationContext(activity);
+    }
+
     public static ViewPropertyFragment newInstance(Property property) {
         ViewPropertyFragment fragment = new ViewPropertyFragment();
 

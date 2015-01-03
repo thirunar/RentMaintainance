@@ -22,6 +22,8 @@ import it.gmariotti.cardslib.library.internal.CardThumbnail;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.rentmaintainance.app.AllConstants.PROPERTY_STRING;
+
 public class ViewPropertiesFragment extends Fragment {
 
     private static final String TAG = "ViewPropertiesFragment";
@@ -78,21 +80,49 @@ public class ViewPropertiesFragment extends Fragment {
 
     private List<Card> getCardsFor(List<Property> properties) {
         List<Card> cards = new ArrayList<Card>();
-        for (Property property : properties) {
-            CardHeader cardheader = new CardHeader(getActivity());
-            cardheader.setTitle(property.getHouseNumber());
+        for (final Property property : properties) {
+            CardHeader cardheader = setupCardHeader(property);
 
-            Card card = new Card(getActivity().getApplicationContext());
-            card.setTitle(property.getName());
-            card.addCardHeader(cardheader);
+            Card card = setupCardDetails(property, cardheader);
+            setupCardThumbnail(card);
 
-            CardThumbnail cardThumbnail = new CardThumbnail(getActivity());
-            cardThumbnail.setDrawableResource(R.drawable.ic_home);
+            final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            card.setOnClickListener(new Card.OnCardClickListener() {
+                @Override
+                public void onClick(Card card, View view) {
+                    ViewPropertyFragment fragment = new ViewPropertyFragment(getActivity());
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(PROPERTY_STRING, property);
+                    fragment.setArguments(bundle);
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, fragment)
+                            .commit();
+                }
+            });
 
-            card.addCardThumbnail(cardThumbnail);
             cards.add(card);
         }
         return cards;
+    }
+
+    private void setupCardThumbnail(Card card) {
+        CardThumbnail cardThumbnail = new CardThumbnail(getActivity());
+        cardThumbnail.setDrawableResource(R.drawable.ic_home);
+
+        card.addCardThumbnail(cardThumbnail);
+    }
+
+    private Card setupCardDetails(Property property, CardHeader cardheader) {
+        Card card = new Card(getActivity().getApplicationContext());
+        card.setTitle(property.getName());
+        card.addCardHeader(cardheader);
+        return card;
+    }
+
+    private CardHeader setupCardHeader(Property property) {
+        CardHeader cardheader = new CardHeader(getActivity());
+        cardheader.setTitle(property.getHouseNumber());
+        return cardheader;
     }
 
     private void setupKenBurnsView(View rootView) {
