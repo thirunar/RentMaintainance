@@ -22,6 +22,8 @@ import it.gmariotti.cardslib.library.view.CardListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.rentmaintainance.app.AllConstants.EXPENSE_STRING;
+
 public class ViewExpensesFragment extends Fragment {
 
     private static final String TAG = "ViewExpensesFragment";
@@ -89,7 +91,7 @@ public class ViewExpensesFragment extends Fragment {
 
     private List<Card> getCardsFor(List<Expense> expenses) {
         List<Card> cards = new ArrayList<Card>();
-        for (Expense expense : expenses) {
+        for (final Expense expense : expenses) {
             CardHeader cardheader = new CardHeader(getActivity());
             cardheader.setTitle(expense.category());
 
@@ -97,6 +99,20 @@ public class ViewExpensesFragment extends Fragment {
             card.setTitle(Float.toString(expense.amount()) + " \nDate: " + DateUtil.formatDateTime(expense.date()));
             card.addCardHeader(cardheader);
 
+            final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            card.setOnClickListener(new Card.OnCardClickListener() {
+                @Override
+                public void onClick(Card card, View view) {
+                    ViewExpenseFragment fragment = new ViewExpenseFragment(getActivity());
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(EXPENSE_STRING, expense);
+                    fragment.setArguments(bundle);
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, fragment)
+                            .commit();
+
+                }
+            });
             cards.add(card);
         }
         return cards;
