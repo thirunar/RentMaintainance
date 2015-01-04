@@ -22,6 +22,8 @@ import it.gmariotti.cardslib.library.internal.CardHeader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.rentmaintainance.app.AllConstants.INCOME_STRING;
+
 public class ViewIncomesFragment extends Fragment {
 
     private static final String TAG = "ViewIncomesFragment";
@@ -83,7 +85,7 @@ public class ViewIncomesFragment extends Fragment {
 
     private List<Card> getCardsFor(List<Income> incomes) {
         List<Card> cards = new ArrayList<Card>();
-        for (Income income : incomes) {
+        for (final Income income : incomes) {
             CardHeader cardheader = new CardHeader(getActivity());
             cardheader.setTitle(income.details());
 
@@ -91,6 +93,20 @@ public class ViewIncomesFragment extends Fragment {
             card.setTitle(Float.toString(income.amount()) + " \nDate: " + DateUtil.formatDateTime(income.date()));
             card.addCardHeader(cardheader);
 
+            final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            card.setOnClickListener(new Card.OnCardClickListener() {
+                @Override
+                public void onClick(Card card, View view) {
+                    ViewIncomeFragment fragment = new ViewIncomeFragment(getActivity());
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(INCOME_STRING, income);
+                    fragment.setArguments(bundle);
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, fragment)
+                            .commit();
+
+                }
+            });
             cards.add(card);
         }
         return cards;

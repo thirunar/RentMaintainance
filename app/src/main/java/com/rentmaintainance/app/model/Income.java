@@ -1,12 +1,26 @@
 package com.rentmaintainance.app.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
-public class Income {
+public class Income implements Parcelable {
     private String propertyId;
     private Float amount;
     private String details;
     private Date date;
+
+    public Income(Parcel parcel) {
+        propertyId = parcel.readString();
+        amount = parcel.readFloat();
+        details = parcel.readString();
+        date = (Date) parcel.readValue(Date.class.getClassLoader());
+    }
+
+    public Income() {
+
+    }
 
     public String propertyId() {
         return propertyId;
@@ -43,4 +57,28 @@ public class Income {
         this.date = date;
         return this;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(propertyId);
+        dest.writeFloat(amount);
+        dest.writeString(details);
+        dest.writeValue(date);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Income createFromParcel(Parcel in) {
+            return new Income(in);
+        }
+
+        public Income[] newArray(int size) {
+            return new Income[size];
+        }
+    };
+
 }

@@ -23,6 +23,7 @@
     <string name="add_property">Add Property</string>
     <string name="edit_property">Edit Property</string>
     <string name="edit_expense">Edit Expense</string>
+    <string name="edit_income">Edit Income</string>
     <string name="edit_tenant">Edit Tenant</string>
     <string name="date">Date</string>
     <string name="address">Address</string>
