@@ -3,10 +3,10 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.2'
+        classpath 'com.android.tools.build:gradle:0.14.2'
     }
 }
-['idea', 'android', 'maven'].each({ apply plugin: it })
+apply plugin: 'com.android.application'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -25,6 +25,10 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
         release {
             runProguard false
@@ -35,9 +39,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    // You must install or update the Support Repository through the SDK manager to use this dependency.
-    // You must install or update the Support Repository through the SDK manager to use this dependency.
-    // You must install or update the Support Repository through the SDK manager to use this dependency.
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.android.support:appcompat-v7:19.+'
     compile 'se.emilsjolander:StickyScrollViewItems:1.1.0'
