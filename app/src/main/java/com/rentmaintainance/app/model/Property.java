@@ -113,7 +113,7 @@ public class Property implements Parcelable {
         dest.writeString(tenantId);
     }
 
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+    public static final Creator CREATOR = new Creator() {
         public Property createFromParcel(Parcel in) {
             return new Property(in);
         }

@@ -84,7 +84,7 @@ public class Expense implements Parcelable{
         dest.writeValue(date);
     }
 
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+    public static final Creator CREATOR = new Creator() {
         public Expense createFromParcel(Parcel in) {
             return new Expense(in);
         }

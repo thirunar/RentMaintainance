@@ -77,13 +77,18 @@ public class PropertyRepository extends MaintenanceRepository {
     }
 
     public List<Property> getAllProperties() {
+        Cursor cursor = getCursorForAllProperties();
+        return readAllProperties(cursor);
+    }
+
+    public Cursor getCursorForAllProperties() {
         String query = "SELECT * FROM " + TABLE_PROPERTY;
         SQLiteDatabase db = masterRepository.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
 
         cursor.moveToFirst();
-        return readAllProperties(cursor);
+        return cursor;
     }
 
     private List<Property> readAllProperties(Cursor cursor) {

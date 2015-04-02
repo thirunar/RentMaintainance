@@ -71,7 +71,7 @@ public class Income implements Parcelable {
         dest.writeValue(date);
     }
 
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+    public static final Creator CREATOR = new Creator() {
         public Income createFromParcel(Parcel in) {
             return new Income(in);
         }

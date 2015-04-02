@@ -118,7 +118,7 @@ public class Tenant implements Parcelable {
         dest.writeFloat(securityDeposit);
     }
 
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+    public static final Creator CREATOR = new Creator() {
         public Tenant createFromParcel(Parcel in) {
             return new Tenant(in);
         }

@@ -2,11 +2,13 @@ package com.rentmaintainance.app.view;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import com.emilsjolander.components.StickyScrollViewItems.StickyScrollView;
 import com.melnykov.fab.FloatingActionButton;
@@ -19,6 +21,8 @@ import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.internal.CardHeader;
 import it.gmariotti.cardslib.library.internal.CardThumbnail;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +33,6 @@ public class ViewPropertiesFragment extends Fragment {
     private static final String TAG = "ViewPropertiesFragment";
     private ListView propertiesListView;
     private FloatingActionButton floatingActionButton;
-
 
     public ViewPropertiesFragment(Activity activity) {
         Context.getInstance().updateApplicationContext(activity.getApplicationContext());
@@ -51,6 +54,19 @@ public class ViewPropertiesFragment extends Fragment {
     }
 
     private void initializeView(final View rootView) {
+        Button csvButton = (Button) rootView.findViewById(R.id.csv_button);
+        csvButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    File file = new File(Environment.getExternalStorageDirectory() + File.separator + "temp3.csv");
+                    Context.getInstance().getPropertyService().generateCSV(file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        
         setupKenBurnsView(rootView);
         setupStickyScrollView(rootView);
         setupPropertiesListView(rootView);

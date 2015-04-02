@@ -31,17 +31,18 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$" />
+    <file type="web" url="file://$PROJECT_DIR$/app" />
   </component>
   <component name="GradleLocalSettings">
     <option name="modificationStamps">
       <map>
-        <entry key="$USER_HOME$/repos/Temp" value="4266759637000" />
-        <entry key="$USER_HOME$/repos/rentmaintainance" value="2852106754000" />
+        <entry key="$PROJECT_DIR$/../../Temp" value="4266759637000" />
+        <entry key="$PROJECT_DIR$" value="4283975151000" />
+        <entry key="$PROJECT_DIR$/../../rentmaintainance" value="2852106754000" />
       </map>
     </option>
   </component>
-  <component name="IdProvider" IDEtalkID="1E2625E57C7F37C83A0CACBA6C8A252D" />
+  <component name="IdProvider" IDEtalkID="94961C55AC0D98AC4F398B71C1270852" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -57,9 +58,6 @@
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
   </component>
   <component name="PropertiesComponent">
     <property name="GoToClass.includeLibraries" value="false" />

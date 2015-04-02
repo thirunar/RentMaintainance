@@ -5,6 +5,7 @@ import com.rentmaintainance.app.service.ExpenseService;
 import com.rentmaintainance.app.service.IncomeService;
 import com.rentmaintainance.app.service.PropertyService;
 import com.rentmaintainance.app.service.TenantService;
+import com.rentmaintainance.app.utils.CSVUtil;
 
 public class Context {
     private android.content.Context applicationContext;
@@ -25,6 +26,7 @@ public class Context {
     private AllTenants allTenants;
     private AllIncome allIncome;
     private AllExpense allExpense;
+    private CSVUtil csvUtil;
 
     public static Context getInstance() {
         return context;
@@ -132,6 +134,13 @@ public class Context {
             this.expenseService = new ExpenseService();
         }
         return expenseService;
+    }
+    
+    public CSVUtil getCSVUtil() {
+        if (csvUtil == null) {
+            this.csvUtil = new CSVUtil();
+        }
+        return csvUtil;
     }
 
 }
