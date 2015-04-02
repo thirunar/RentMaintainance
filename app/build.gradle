@@ -45,4 +45,8 @@ dependencies {
     compile 'com.github.gabrielemariotti.cards:library:1.9.1'
     compile 'com.melnykov:floatingactionbutton:1.1.0'
     compile 'net.sourceforge.javacsv:javacsv:2.0'
+    compile 'net.sourceforge.jexcelapi:jxl:2.6'
+
+//    compile 'org.apache.poi:poi-ooxml:3.5-beta5'
+
 }

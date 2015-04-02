@@ -59,7 +59,7 @@ public class ViewPropertiesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    File file = new File(Environment.getExternalStorageDirectory() + File.separator + "temp3.csv");
+                    File file = new File(Environment.getExternalStorageDirectory() + File.separator + "rent.xls");
                     Context.getInstance().getPropertyService().generateCSV(file);
                 } catch (IOException e) {
                     e.printStackTrace();

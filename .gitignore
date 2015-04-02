@@ -3,4 +3,6 @@
 /.idea
 .DS_Store
 /build
+.idea/modules.xml
+app/app.iml
 .gitignore

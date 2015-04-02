@@ -3,6 +3,7 @@ package com.rentmaintainance.app.service;
 import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.model.Property;
 import com.rentmaintainance.app.repository.AllProperties;
+import jxl.write.WriteException;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +23,10 @@ public class PropertyService {
     }
     
     public void generateCSV(File file) throws IOException {
-        context.getCSVUtil().generateCSV(allProperties.getCursorForAllProperties(), file);
+        try {
+            context.getCSVUtil().write(allProperties.getCursorForAllProperties(), file);
+        } catch (WriteException e) {
+            e.printStackTrace();
+        }
     }
 }
