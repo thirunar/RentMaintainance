@@ -1,6 +1,5 @@
 package com.rentmaintainance.app.service;
 
-import com.rentmaintainance.app.AllConstants;
 import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.repository.AllExpense;
 import com.rentmaintainance.app.repository.AllIncome;
@@ -8,7 +7,6 @@ import com.rentmaintainance.app.repository.AllProperties;
 import com.rentmaintainance.app.repository.AllTenants;
 import jxl.write.WriteException;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
