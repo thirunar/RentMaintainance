@@ -39,5 +39,13 @@
     <string name="amount">Amount</string>
     <string name="add_income">Add Income</string>
     <string name="add_expense">Add Expense</string>
+    <string name="str_report">Report</string>
+    <string name="title_view_report">View Reports</string>
+    <string name="generate_report">Generate Report</string>
 
+    <string-array name="options">
+        <item>Income</item>
+        <item>Expense</item>
+        <item>Property</item>
+    </string-array>
 </resources>

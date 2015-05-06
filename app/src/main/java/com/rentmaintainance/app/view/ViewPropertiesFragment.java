@@ -54,19 +54,7 @@ public class ViewPropertiesFragment extends Fragment {
     }
 
     private void initializeView(final View rootView) {
-        Button csvButton = (Button) rootView.findViewById(R.id.csv_button);
-        csvButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    File file = new File(Environment.getExternalStorageDirectory() + File.separator + "rent.xls");
-                    Context.getInstance().getPropertyService().generateCSV(file);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        
+
         setupKenBurnsView(rootView);
         setupStickyScrollView(rootView);
         setupPropertiesListView(rootView);

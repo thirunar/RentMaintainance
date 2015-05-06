@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose option"
+            android:id="@+id/optionTextView"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" 
+            android:layout_marginTop="72dp"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/options"
+            android:layout_alignTop="@+id/optionTextView" 
+            android:layout_toRightOf="@+id/optionTextView"
+            android:layout_toEndOf="@+id/optionTextView"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/generate_report"
+            android:id="@+id/generate_report" 
+            android:layout_below="@+id/options" 
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="65dp"/>
+
+
+</RelativeLayout>

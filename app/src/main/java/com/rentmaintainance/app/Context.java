@@ -1,10 +1,7 @@
 package com.rentmaintainance.app;
 
 import com.rentmaintainance.app.repository.*;
-import com.rentmaintainance.app.service.ExpenseService;
-import com.rentmaintainance.app.service.IncomeService;
-import com.rentmaintainance.app.service.PropertyService;
-import com.rentmaintainance.app.service.TenantService;
+import com.rentmaintainance.app.service.*;
 import com.rentmaintainance.app.utils.CSVUtil;
 
 public class Context {
@@ -15,6 +12,7 @@ public class Context {
     private TenantService tenantService;
     private IncomeService incomeService;
     private ExpenseService expenseService;
+    private ReportingService reportingService;
 
     private Repository repository;
     private PropertyRepository propertyRepository;
@@ -134,6 +132,13 @@ public class Context {
             this.expenseService = new ExpenseService();
         }
         return expenseService;
+    }
+
+    public ReportingService getReportingService() {
+        if (reportingService == null) {
+            this.reportingService = new ReportingService();
+        }
+        return reportingService;
     }
     
     public CSVUtil getCSVUtil() {

@@ -56,7 +56,10 @@ public class MainActivity extends ActionBarActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new ViewTenantsFragment(this))
                     .commit();
-
+        if (position == 4)
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, new ViewReportFragment(this))
+                    .commit();
     }
 
     public void restoreActionBar() {
@@ -81,5 +84,4 @@ public class MainActivity extends ActionBarActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
-
 }

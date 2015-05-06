@@ -2,6 +2,7 @@ package com.rentmaintainance.app.repository;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
+import android.util.SparseArray;
 import com.rentmaintainance.app.model.Property;
 
 import java.util.List;
@@ -24,6 +25,10 @@ public class AllProperties {
 
     public Cursor getCursorForAllProperties() {
         return propertyRepository.getCursorForAllProperties();
+    }
+
+    public SparseArray<SparseArray<String>> getAllPropertiesData() {
+        return propertyRepository.getAllPropertiesData();
     }
 
     public long updatePropertyDetails(Property property) {
