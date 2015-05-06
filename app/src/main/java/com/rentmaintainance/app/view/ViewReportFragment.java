@@ -48,8 +48,15 @@ public class ViewReportFragment extends Fragment implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 try {
-                    if (spinner.getSelectedItem().toString().equals(getString(R.string.property))) {
+                    String selectedItem = spinner.getSelectedItem().toString();
+                    if (selectedItem.equals(getString(R.string.property))) {
                         context.getReportingService().getReportForAllProperties();
+                    } else if (selectedItem.equals(getString(R.string.income))) {
+                        context.getReportingService().getReportForAllIncomes();
+                    } else if (selectedItem.equals(getString(R.string.expense))) {
+                        context.getReportingService().getReportForAllExpenses();
+                    } else if (selectedItem.equals(getString(R.string.tenant))) {
+                        context.getReportingService().getReportForAllTenants();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.util.SparseArray;
 import com.rentmaintainance.app.model.Income;
 import com.rentmaintainance.app.utils.DateUtil;
 
@@ -51,13 +52,22 @@ public class IncomeRepository extends MaintenanceRepository {
     }
 
     public List<Income> getAllIncome() {
+        Cursor cursor = getCursorForAllIncome();
+        return readAllIncome(cursor);
+    }
+
+    private Cursor getCursorForAllIncome() {
         String query = "SELECT * FROM " + TABLE_INCOME;
         SQLiteDatabase db = masterRepository.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
 
         cursor.moveToFirst();
-        return readAllIncome(cursor);
+        return cursor;
+    }
+
+    public SparseArray<SparseArray<String>> getAllIncomeData() {
+        return content(getCursorForAllIncome());
     }
 
     private List<Income> readAllIncome(Cursor cursor) {

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.util.SparseArray;
 import com.rentmaintainance.app.model.Tenant;
 import com.rentmaintainance.app.utils.DateUtil;
 
@@ -59,13 +60,18 @@ public class TenantRepository extends MaintenanceRepository {
     }
 
     public List<Tenant> getAllTenants() {
+        Cursor cursor = getCursorForAllTenants();
+        return readAllTenants(cursor);
+    }
+
+    private Cursor getCursorForAllTenants() {
         String query = "SELECT * FROM " + TABLE_TENANT;
         SQLiteDatabase db = masterRepository.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
 
         cursor.moveToFirst();
-        return readAllTenants(cursor);
+        return cursor;
     }
 
     private List<Tenant> readAllTenants(Cursor cursor) {
@@ -84,5 +90,9 @@ public class TenantRepository extends MaintenanceRepository {
         }
         cursor.close();
         return tenants;
+    }
+
+    public SparseArray<SparseArray<String>> getAllTenantsData() {
+        return content(getCursorForAllTenants());
     }
 }

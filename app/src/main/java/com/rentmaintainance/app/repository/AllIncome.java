@@ -1,5 +1,6 @@
 package com.rentmaintainance.app.repository;
 
+import android.util.SparseArray;
 import com.rentmaintainance.app.model.Income;
 
 import java.util.List;
@@ -19,4 +20,9 @@ public class AllIncome {
     public List<Income> getAllIncome() {
         return incomeRepository.getAllIncome();
     }
+
+    public SparseArray<SparseArray<String>> getAllIncomeData() {
+        return incomeRepository.getAllIncomeData();
+    }
+
 }

@@ -42,10 +42,14 @@
     <string name="str_report">Report</string>
     <string name="title_view_report">View Reports</string>
     <string name="generate_report">Generate Report</string>
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
+    <string name="tenant">Tenant</string>
 
     <string-array name="options">
         <item>Income</item>
         <item>Expense</item>
         <item>Property</item>
+        <item>Tenant</item>
     </string-array>
 </resources>

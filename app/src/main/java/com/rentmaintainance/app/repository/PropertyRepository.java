@@ -9,9 +9,7 @@ import com.rentmaintainance.app.model.Property;
 import com.rentmaintainance.app.utils.DateUtil;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.rentmaintainance.app.repository.TenantRepository.KEY_ID;
 import static com.rentmaintainance.app.repository.TenantRepository.TABLE_TENANT;
@@ -96,28 +94,6 @@ public class PropertyRepository extends MaintenanceRepository {
 
     public SparseArray<SparseArray<String>> getAllPropertiesData() {
         return content(getCursorForAllProperties());
-    }
-
-    public SparseArray<SparseArray<String>> content(Cursor cursor) {
-        SparseArray<SparseArray<String>> content = new SparseArray<SparseArray<String>>();
-        for (int row = 0; row < cursor.getCount(); row++) {
-
-            int numberOfColumns = cursor.getColumnCount();
-            SparseArray<String> columnAndValue = new SparseArray<String>();
-            for (int column = 0; column < numberOfColumns; column++) {
-                int type = cursor.getType(column);
-                if (type == Cursor.FIELD_TYPE_STRING) {
-                    columnAndValue.append(column, cursor.getString(column));
-                } else if (type == Cursor.FIELD_TYPE_FLOAT) {
-                    columnAndValue.append(column, Float.toString(cursor.getFloat(column)));
-                } else if (type == Cursor.FIELD_TYPE_INTEGER) {
-                    columnAndValue.append(column, Integer.toString(cursor.getInt(column)));
-                }
-            }
-            content.put(row, columnAndValue);
-        }
-
-        return content;
     }
 
     private List<Property> readAllProperties(Cursor cursor) {

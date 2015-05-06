@@ -1,5 +1,6 @@
 package com.rentmaintainance.app.repository;
 
+import android.util.SparseArray;
 import com.rentmaintainance.app.model.Expense;
 
 import java.util.List;
@@ -19,4 +20,9 @@ public class AllExpense {
     public List<Expense> getAllExpense() {
         return expenseRepository.getAllExpense();
     }
+
+    public SparseArray<SparseArray<String>> getAllExpenseData() {
+        return expenseRepository.getAllExpenseData();
+    }
+
 }
