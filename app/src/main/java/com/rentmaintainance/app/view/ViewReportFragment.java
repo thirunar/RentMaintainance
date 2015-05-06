@@ -74,15 +74,5 @@ public class ViewReportFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
-            case R.id.generate_report:
-                if (spinner.getSelectedItem().toString().equals(getString(R.string.property))) {
-                    try {
-                        context.getReportingService().getReportForAllProperties();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-        }
     }
 }
