@@ -1,5 +1,6 @@
 package com.rentmaintainance.app.service;
 
+import com.rentmaintainance.app.AllConstants;
 import com.rentmaintainance.app.Context;
 import com.rentmaintainance.app.repository.AllExpense;
 import com.rentmaintainance.app.repository.AllIncome;
@@ -10,6 +11,9 @@ import jxl.write.WriteException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+
+import static com.rentmaintainance.app.AllConstants.*;
+import static com.rentmaintainance.app.AllConstants.PROPERTY_DETAILS;
 
 public class ReportingService {
 
@@ -29,7 +33,7 @@ public class ReportingService {
 
     public void getReportForAllProperties() throws IOException {
         try {
-            context.getCSVUtil().write(allProperties.getAllPropertiesData(), "PropertyDetails" + new Date().getTime() + ".xls");
+            context.getCSVUtil().write(allProperties.getAllPropertiesData(), PROPERTY_DETAILS + new Date().getTime() + XLS_EXTENSION);
         } catch (WriteException e) {
             e.printStackTrace();
         }
@@ -37,7 +41,7 @@ public class ReportingService {
 
     public void getReportForAllIncomes() throws IOException {
         try {
-            context.getCSVUtil().write(allIncome.getAllIncomeData(), "IncomeDetails" + new Date().getTime() + ".xls");
+            context.getCSVUtil().write(allIncome.getAllIncomeData(), INCOME_DETAILS + new Date().getTime() + XLS_EXTENSION);
         } catch (WriteException e) {
             e.printStackTrace();
         }
@@ -45,7 +49,7 @@ public class ReportingService {
 
     public void getReportForAllTenants() throws IOException {
         try {
-            context.getCSVUtil().write(allTenants.getAllTenantsData(), "TenantsDetails" + new Date().getTime() + ".xls");
+            context.getCSVUtil().write(allTenants.getAllTenantsData(), TENANT_DETAILS + new Date().getTime() + XLS_EXTENSION);
         } catch (WriteException e) {
             e.printStackTrace();
         }
@@ -53,7 +57,7 @@ public class ReportingService {
 
     public void getReportForAllExpenses() throws IOException {
         try {
-            context.getCSVUtil().write(allExpense.getAllExpenseData(), "ExpenseDetails" + new Date().getTime() + ".xls");
+            context.getCSVUtil().write(allExpense.getAllExpenseData(), EXPENSE_DETAILS + new Date().getTime() + XLS_EXTENSION);
         } catch (WriteException e) {
             e.printStackTrace();
         }
